@@ -1,18 +1,17 @@
 <?php
 // db credentials
-$dbname = "HungerCure";
-$dbuser = "root";
+$dbname = "hungercure";
+$dbuser = "saiful";
 $dbpass = "kollol36";
 
 $con = mysqli_connect("localhost",$dbuser,$dbpass,$dbname);
-$request_type = $_REQUEST['request_type'];
 $output = Array();
 $output['error'] = true;
 $output['message']='dummy';
 
 if($con)
 {
-   if($request_type == 'login')
+   if($_REQUEST['request_type'] == 'login')
    {
    	   $table = 'admininfotable';
    	   $username = $_REQUEST['username'];
@@ -28,7 +27,7 @@ if($con)
 		else $output['error']=true;
    }
 
-   else if($request_type == 'getlist')
+   else if($_REQUEST['request_type'] == 'getlist')
    {
    		$table = 'userrequesttable';
    		$query = "select a.username, b.* from userinformationtable a, userrequesttable b where a.phoneno = b.phoneno";
@@ -59,7 +58,7 @@ if($con)
    			$output['message'] = "cannot execute query";
    		}	
    }
-   else if($request_type == "removerows")
+   else if($_REQUEST['request_type'] == "removerows")
    {
    	  $list = json_decode($_REQUEST['removeditemslist']);
    	 /* for($i = 0; $i < count($list,COUNT_NORMAL); $i++)
