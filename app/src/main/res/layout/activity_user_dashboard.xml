@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UserDashboardActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="User Dashboard"
+        style="@android:style/TextAppearance.Large"
+        android:textColor="@color/colorPrimary"
+        android:layout_gravity="center_horizontal"/>
+
+
+
+    <EditText
+        android:layout_marginTop="40dp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:hint="enter food description"
+        android:id="@+id/usr_dashboard_edittxt_fooddesc"
+        android:layout_gravity="center_horizontal"
+        android:inputType="text"
+        />
+
+    <EditText
+        android:layout_marginTop="15dp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:hint="enter your location"
+        android:id="@+id/usr_dashboard_edittxt_locationdesc"
+        android:layout_gravity="center_horizontal"
+        android:inputType="text"
+        />
+
+    <CheckBox
+        android:id="@+id/usr_dashboard_chkbx_currentlocation"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="use my current locaion"
+        />
+
+    <Button
+        android:id="@+id/usr_dashboard_btn_send"
+        android:layout_marginTop="10dp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="send"/>
+
+</LinearLayout>

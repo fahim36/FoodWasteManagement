@@ -1,0 +1,4 @@
+#Sun Jul 25 21:45:33 BDT 2021
+base.0=H\:\\Project\\Git\\WasteFoodManagement-HungerCure--master\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+renamed.0=classes.dex
+path.0=classes.dex
