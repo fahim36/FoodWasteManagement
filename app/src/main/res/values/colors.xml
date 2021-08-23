@@ -1,6 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+        <color name="colorPrimary">#1abc9c</color>
+        <color name="colorPrimaryDark">#005AFE</color>
+        <!--<color name="colorPrimaryDark">#16a085</color>-->
+        <color name="colorAccent">#16a085</color>
+        <color name="white">#FFFFFF</color>
+        <color name="black">#000000</color>
+        <color name="black_light">#13191E</color>
+        <color name="appBlue">#303F9F</color>
+        <!--    <ccolorPrimaryolor name="whitishBlue">#b8eeff</ccolorPrimaryolor>-->
+        <color name="grey">#cdcdcd</color>
+        <color name="dark_grey">#616161</color>
+        <color name="material_red">#b62256</color>
+        <color name="material_blue">#2257b6</color>
+        <color name="ripple_green">#c516a085</color>
+        <color name="ripple_green_light">#A7FBD4</color>
+        <color name="ripple_red">#c5e74c3c</color>
+        <color name="ripple_grey">#c5808080</color>
+        <color name="edit_profile_banner">#373737</color>
+        <color name="whitish_green">#E1F4EA</color>
+        <color name="gray">#cdcdcd</color>
+        <color name="skip_yellow">#f9a826</color>
+        <color name="light_gray">#efefef</color>
+        <color name="disable_color">#dddddd</color>
+        <color name="gre_color">#193a2b</color>
+        <color name="b_color">#005AFE</color>
+        <color name="Blue">#0284F5</color>
+        <color name="pinned_item_bg">#fafa05</color>
+
+        <color name="bg_search_view">#E0F4E9</color>
+        <color name="bg_tab_unselected">#002A77</color>
+        <color name="companytab">#B9CDFF</color>
+        <color name="searchbg">#E0F4E9</color>
+        <color name="grouplistbg">#69B3FF</color>
+        <color name="bg_tab_name">#B0EECC</color>
+
+        <color name="side_bar_bg_color">#34000000</color>
+        <color name="side_bar_text_color">#E6FFFFFF</color>
+        <color name="chat_fragment_bg">#DADADA</color>
+        <color name="tab_select_color">#1192E0</color>
+
+        <color name="green_color">#008000</color>
+        <color name="gray50">#ff808080</color>
+
+        <color name="red_400">#EF5350</color>
+        <color name="orange_400">#FFA726</color>
+        <color name="green_400">#66BB6A</color>
+        <color name="purple_400">#AB47BC</color>
+        <color name="ic_tool_color">#0D6BFF</color>
+        <color name="group_expandable_color">#7492C8</color>
+        <color name="invite_btn_color">#199ebb</color>
+        <color name="invite_btn_color_2">#0f9819</color>
+        <color name="invite_participant_bg_color">#4e4e4e</color>
+
+        <!-- IC6 -->
+        <color name="transparent">#00000000</color>
+        <color name="red">#ff0000</color>
+        <color name="blue_light">#0F1E4D</color>
+
+        <color name="emergency_color">#AC0014</color>
+        <color name="info_color">#00761C</color>
+        <color name="major_color">#4D006D</color>
+        <color name="minor_color">#00406D</color>
+
+        <color name="chat_fragment_active">#00865f</color>
+        <color name="chat_fragment_invisible">#808080</color>
+        <color name="chat_fragment_away">#655a00</color>
+        <color name="chat_fragment_dnd">#000</color>
+
+        <color name="dialog_btn_green">#22C341</color>
+
+        <color name="group_info_blue">#00AEEF</color>
+
+        <color name="ongoing_fragment_bg">#EBEFFC</color>
+        <color name="ongoing_fragment_color">#F49823</color>
+        <color name="ongoing_lecture_container_color">#241F2D</color>
+        <color name="l2g_bottom_bg">#EFF3FC</color>
+        <color name="l2g_common_bg">#FFFFFF</color>
+        <color name="l2g_button_orange">#F4A522</color>
+
+        <color name="exam_question_bg_color">#EFF3FC</color>
+        <color name="chat_message_other_bg_color">#EAECF2</color>
+        <color name="chat_message_mine_bg_color">#F49823</color>
+        <color name="chat_message_mine_bg_color_2">#F5C51F</color>
+
+        <color name="ui_developers_red">#FF4848</color>
+        <color name="ui_developers_grey">#BFBFBF</color>
+        <color name="ui_developers_green">#0BA700</color>
+
+        <color name="event_color_01">#59dbe0</color>
+        <color name="event_color_02">#f57f68</color>
+        <color name="event_color_03">#87d288</color>
+        <color name="event_color_04">#f8b552</color>
+        <color name="toolbar">#efefef</color>
+        <color name="toolbar_text">#8f000000</color>
+        <color name="accent">#2789e4</color>
+        <color name="jagajag_color">#F49823</color>
+        <color name="room_detail_selected_color">#b1b1b1</color>
+
+        <color name="thread_even_color">#f2f6fc</color>
+        <color name="thread_odd_color">#f6f6f6</color>
 </resources>

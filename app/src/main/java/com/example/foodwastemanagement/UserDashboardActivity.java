@@ -1,17 +1,21 @@
 package com.example.foodwastemanagement;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -31,6 +35,7 @@ import java.util.Map;
 public class UserDashboardActivity extends AppCompatActivity {
 
     EditText edttxt_foodesc, edttxt_loctiondesc;
+    TextView newLocationTv;
     CheckBox chkbx_currentlocation;
     Button btn_send;
     String str_locationdesc = null, str_fooddesc = null, url = Constants.URL_string + "user_request_handler.php", str_phoneno;
@@ -48,6 +53,15 @@ public class UserDashboardActivity extends AppCompatActivity {
         edttxt_loctiondesc = findViewById(R.id.usr_dashboard_edittxt_locationdesc);
         chkbx_currentlocation = findViewById(R.id.usr_dashboard_chkbx_currentlocation);
         btn_send = findViewById(R.id.usr_dashboard_btn_send);
+        newLocationTv= findViewById(R.id.newLocationTv);
+
+        newLocationTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(UserDashboardActivity.this,MapsActivity.class);
+                startActivity(i);
+            }
+        });
 
         str_phoneno = getIntent().getStringExtra("phoneno");
 
@@ -201,4 +215,14 @@ public class UserDashboardActivity extends AppCompatActivity {
 
         queue.add(request);
     }
+    //todo
+//    public void onGoToMaps(View view){
+//        Intent intent = new Intent(getApplicationContext(),PickupLocationActivity.class);
+//        Log.i("lat",""+latitude+ longitude);
+//        intent.putExtra("latitude", latitude);
+//        intent.putExtra("longitude",longitude);
+//        startActivity(intent);
+//        setResult(Activity.RESULT_OK,intent);
+//        finish();
+//    }
 }
