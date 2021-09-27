@@ -78,6 +78,9 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
                             if(!object.getBoolean("error"))
                             {
                                 Toast.makeText(RegisterUser.this,object.getString("message"),Toast.LENGTH_SHORT).show();
+                                Intent i = new Intent(RegisterUser.this, UserLogin.class);
+                                startActivity(i);
+                                finish();
                             }
                             else Toast.makeText(RegisterUser.this,object.getString("message"),Toast.LENGTH_SHORT).show();
                         } catch (JSONException e) {

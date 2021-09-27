@@ -124,7 +124,7 @@ public class UserLogin extends AppCompatActivity implements View.OnClickListener
         }
         else if(v == txt_gotoadminlogin)
         {
-            Intent i = new Intent(this,AdminLoginActivity.class);
+            Intent i = new Intent(this, NGOLoginActivity.class);
             startActivity(i);
             finish();
         }

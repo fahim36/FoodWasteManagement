@@ -5,7 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RegisterUser"
+    android:background="@drawable/app_background_login"
     android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="User Registration"
+        android:textSize="25sp"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:layout_margin="30dp"/>
 
 
     <EditText
@@ -62,9 +72,11 @@
     <Button
         android:id="@+id/regusr_btn_submit"
         android:layout_marginTop="10dp"
-        android:layout_width="300dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:background="@drawable/gradient_bg_round"
+        android:textColor="@color/white"
         android:text="Submit"/>
 
     <TextView

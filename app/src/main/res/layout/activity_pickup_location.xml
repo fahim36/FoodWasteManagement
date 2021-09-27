@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@drawable/submit_btn"
+        android:background="@drawable/gradient_bg_round"
         android:fontFamily="@font/bubblegum_sans"
         android:onClick="onReturn"
         android:text="Back to Donation List"

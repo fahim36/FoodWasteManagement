@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "804935709080",
+    "firebase_url": "https://fir-eb14f.firebaseio.com",
+    "project_id": "fir-eb14f",
+    "storage_bucket": "fir-eb14f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:804935709080:android:c27b7fa6e98066069abbed",
+        "android_client_info": {
+          "package_name": "com.example.foodwastemanagement"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "804935709080-57462ump9qkdqb0relutqa3lus4aa7oe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4-dZjiceo_TJrUe0CmMXgnbiRG4iw5ok"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "804935709080-57462ump9qkdqb0relutqa3lus4aa7oe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

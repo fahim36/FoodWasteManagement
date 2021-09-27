@@ -1,12 +1,21 @@
 package com.example.foodwastemanagement;
 
 import android.annotation.SuppressLint;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Build;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,6 +25,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -25,6 +35,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 
@@ -36,7 +47,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AdminDashboardActivity extends AppCompatActivity
+public class NGODashboardActivity extends AppCompatActivity
 {
 
     RecyclerView recyclerView;
@@ -44,6 +55,8 @@ public class AdminDashboardActivity extends AppCompatActivity
     MyAdapter adapter;
     private Paint p = new Paint();
     private String url = Constants.URL_string+"admin_request_handler.php";
+    private static final String TAG = "PushNotification";
+    private static final String CHANNEL_ID = "101";
     View viewforsnackbar;
     ArrayList<ListItem> rlist;
 
@@ -63,7 +76,15 @@ public class AdminDashboardActivity extends AppCompatActivity
         viewforsnackbar = findViewById(android.R.id.content);
 
     }
+    public void showPopup(View v) {
 
+        //todo menu button add
+
+        PopupMenu popup = new PopupMenu(this, v);
+        MenuInflater inflater = popup.getMenuInflater();
+        inflater.inflate(R.menu.list_menu, popup.getMenu());
+        popup.show();
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = new MenuInflater(this);
@@ -82,7 +103,7 @@ public class AdminDashboardActivity extends AppCompatActivity
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.clear();
                 editor.apply();*/
-                startActivity(new Intent(this,AdminLoginActivity.class));
+                startActivity(new Intent(this, NGOLoginActivity.class));
                 finish();
                 return true;
 
@@ -104,6 +125,9 @@ public class AdminDashboardActivity extends AppCompatActivity
 
     private void saveChangesOnServer()
     {
+
+        //todo bugfix
+
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("saving on server...");
         progressDialog.setCanceledOnTouchOutside(false);
@@ -133,10 +157,10 @@ public class AdminDashboardActivity extends AppCompatActivity
                     JSONObject object = new JSONObject(response);
                     if(!object.getBoolean("error"))
                     {
-                        Toast.makeText(AdminDashboardActivity.this,"saved successfully",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(NGODashboardActivity.this,"saved successfully",Toast.LENGTH_SHORT).show();
                     }
                     else
-                        Toast.makeText(AdminDashboardActivity.this, "some error has occured", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(NGODashboardActivity.this, "some error has occured", Toast.LENGTH_SHORT).show();
                     Log.d("response",object.getString("message"));
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -147,7 +171,7 @@ public class AdminDashboardActivity extends AppCompatActivity
             @Override
             public void onErrorResponse(VolleyError error) {
                 progressDialog.dismiss();
-                Toast.makeText(AdminDashboardActivity.this,error.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(NGODashboardActivity.this,error.getMessage(),Toast.LENGTH_SHORT).show();
             }
         })
         {
@@ -181,14 +205,14 @@ public class AdminDashboardActivity extends AppCompatActivity
                 progressDialog.dismiss();
                 try {
                     JSONObject object = new JSONObject(response);
-                    Log.d("listrs",response);
-                    if(object.getJSONArray("list").get(0) == null)Log.d("listrs","object is null");
-                    else Log.d("listrs","object not null " +object.getJSONArray("list").get(0).toString());
+                    Log.d("listfw",response);
+                    if(object.getJSONArray("list").get(0) == null)Log.d("listfw","object is null");
+                    else Log.d("listfw","object not null " +object.getJSONArray("list").get(0).toString());
 
                     if(!object.getBoolean("error"))
                     {
                         if(object.getString("list").equals("[[]]")){
-                            Toast.makeText(AdminDashboardActivity.this,"user list is empty !",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(NGODashboardActivity.this,"List is empty !",Toast.LENGTH_SHORT).show();
                         }
                         else{
                             JSONArray jsonArray = object.getJSONArray("list");
@@ -198,16 +222,18 @@ public class AdminDashboardActivity extends AppCompatActivity
                                 ListItem item = gson.fromJson(jsonArray.get(i).toString(),ListItem.class);
                                 list.add(item);
                             }
-                            adapter = new MyAdapter(list,AdminDashboardActivity.this);
+                            adapter = new MyAdapter(list, NGODashboardActivity.this);
                             recyclerView.setAdapter(adapter);
                             adapter.notifyDataSetChanged();
+
+                            createNotificationChannel();
 
 
                             initSwipe();
                         }
 
                     }
-                    else Toast.makeText(AdminDashboardActivity.this,"something went wrong",Toast.LENGTH_SHORT).show();
+                    else Toast.makeText(NGODashboardActivity.this,"something went wrong",Toast.LENGTH_SHORT).show();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -217,7 +243,7 @@ public class AdminDashboardActivity extends AppCompatActivity
             @Override
             public void onErrorResponse(VolleyError error) {
                 progressDialog.dismiss();
-                Toast.makeText(AdminDashboardActivity.this,error.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(NGODashboardActivity.this,error.getMessage(),Toast.LENGTH_SHORT).show();
             }
         })
         {
@@ -251,7 +277,6 @@ public class AdminDashboardActivity extends AppCompatActivity
                 if (direction == ItemTouchHelper.LEFT || direction == ItemTouchHelper.RIGHT)
                 {
                     //delete user from list
-//                    adapter.removeItem(position);
                     final ListItem backedupitem = list.get(position);
                     list.remove(position);
                     rlist.add(backedupitem);
@@ -269,66 +294,72 @@ public class AdminDashboardActivity extends AppCompatActivity
                             adapter.notifyItemInserted(position);
                         }
                     });
+                    snackbar.addCallback(new Snackbar.Callback() {
+
+                        @Override
+                        public void onDismissed(Snackbar snackbar, int event) {
+                            if (event == Snackbar.Callback.DISMISS_EVENT_TIMEOUT) {
+                                // Snackbar closed on its own
+                                //todo delete method here
+                                Toast.makeText(NGODashboardActivity.this,"Success",Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
                     snackbar.show();
-
-
-
-                } /*else {
-
-
-                   // make phone call to  user
-                    String phoneno = list.get(position).getPhoneno();
-                    Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phoneno));
-                    startActivity(intent);
-                }*/
+                }
             }
 
             @Override
             public void onChildDraw(Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive)
             {
-/*
-                Bitmap icon;
-                if(actionState == ItemTouchHelper.ACTION_STATE_SWIPE)
-                {
-
-                    View itemView = viewHolder.itemView;
-                    float height = (float) itemView.getBottom() - (float) itemView.getTop();
-                    float width = height / 3;
-
-                    if(dX > 0)
-                    {
-                        p.setColor(Color.parseColor("#388E3C"));
-                        RectF background = new RectF((float) itemView.getLeft(), (float) itemView.getTop(), dX,(float) itemView.getBottom());
-                        c.drawRect(background,p);
-                        Drawable drawable = ContextCompat.getDrawable(AdminDashboardActivity.this,R.drawable.ic_call_white);
-                        assert drawable != null;
-                        icon = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
-                        //icon = BitmapFactory.decodeResource(getResources(), R.drawable.ic_call_white);
-                        RectF icon_dest = new RectF((float) itemView.getLeft() + width ,(float) itemView.getTop() + width,(float) itemView.getLeft()+ 2*width,(float)itemView.getBottom() - width);
-                        if(icon!=null)c.drawBitmap(icon,null,icon_dest,p);
-                    }
-                    else
-                        {
-                        p.setColor(Color.parseColor("#D32F2F"));
-                        RectF background = new RectF((float) itemView.getRight() + dX, (float) itemView.getTop(),(float) itemView.getRight(), (float) itemView.getBottom());
-                        c.drawRect(background,p);
-                        icon = BitmapFactory.decodeResource(getResources(), R.drawable.ic_delete_blue);
-                        RectF icon_dest = new RectF((float) itemView.getRight() - 2*width ,(float) itemView.getTop() + width,(float) itemView.getRight() - width,(float)itemView.getBottom() - width);
-                        if(icon!=null)c.drawBitmap(icon,null,icon_dest,p);
-                    }
-                }*/
                 super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
             }
         };
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
         itemTouchHelper.attachToRecyclerView(recyclerView);
     }
+
+
+
    /* private void removeView(){
         if(view.getParent()!=null) {
             ((ViewGroup) view.getParent()).removeView(view);
         }
     }*/
 
+
+   private void getToken() {
+
+       FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
+           @Override
+           public void onComplete(@NonNull Task<String> task) {
+               //If task is failed then
+               if (!task.isSuccessful()) {
+                   Log.d(TAG, "onComplete: Failed to get the Token");
+               }
+
+               //Token
+               String token = task.getResult();
+               Log.d(TAG, "onComplete: " + token);
+           }
+       });
+   }
+
+
+    private void createNotificationChannel() {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "firebaseNotifChannel";
+            String description = "Receive Firebase notification";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+            channel.setDescription(description);
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+
+            getToken();
+        }
+    }
 
 }
 

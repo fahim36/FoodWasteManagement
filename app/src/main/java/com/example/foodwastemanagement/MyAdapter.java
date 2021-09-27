@@ -28,6 +28,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         context = c;
     }
 
+    public void addAll(ArrayList<ListItem> listItems)
+    {
+        list = listItems;
+        notifyDataSetChanged();
+    }
+
+
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
@@ -89,9 +96,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                             @SuppressLint("MissingPermission")
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                String phoneno = list.get(position).getPhoneno();
-                                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phoneno));
-                                context.getApplicationContext().startActivity(intent);
+                                String phoneNo = list.get(position).getPhoneno();
+                                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + phoneNo));
+                                context.startActivity(intent);
                             }
                         })
                         .setNegativeButton("no", null)

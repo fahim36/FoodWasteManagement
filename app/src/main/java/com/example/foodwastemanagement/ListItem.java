@@ -2,6 +2,7 @@ package com.example.foodwastemanagement;
 
 
 public class ListItem {
+
     private String locationtext;
     private String longitude;
     private String latitude;

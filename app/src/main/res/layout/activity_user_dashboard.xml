@@ -58,6 +58,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Email"
+        android:visibility="gone"
         android:layout_marginEnd="35dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/gl_horizontal_30"
@@ -74,47 +75,49 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:visibility="gone"
         android:text="Use Current Locaion"
         app:layout_constraintStart_toStartOf="@+id/gl_horizontal_30"
         app:layout_constraintTop_toBottomOf="@+id/textField" />
 
 
-
     <TextView
         android:id="@+id/orLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="or"
+        android:layout_width="11dp"
+        android:layout_height="19dp"
         android:layout_marginStart="5dp"
+        android:text="or"
+        android:visibility="gone"
         android:textColor="@color/black"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/usr_dashboard_chkbx_currentlocation"
+        app:layout_constraintBottom_toBottomOf="@+id/newLocationTv"
         app:layout_constraintStart_toEndOf="@+id/usr_dashboard_chkbx_currentlocation"
-        app:layout_constraintTop_toTopOf="@+id/usr_dashboard_chkbx_currentlocation" />
+        app:layout_constraintTop_toTopOf="@+id/newLocationTv" />
 
     <TextView
         android:id="@+id/newLocationTv"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:text="Pick a New Location"
-        android:textColor="@color/black"
         android:layout_marginStart="5dp"
+        android:layout_marginTop="20dp"
         android:drawableStart="@drawable/location_icon_blue_24dp"
         android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="@+id/usr_dashboard_chkbx_currentlocation"
+        android:padding="5dp"
+        android:text="Pick your Location"
+        android:textColor="@color/black"
         app:layout_constraintStart_toEndOf="@+id/orLabel"
-        app:layout_constraintTop_toTopOf="@+id/usr_dashboard_chkbx_currentlocation" />
+        app:layout_constraintTop_toBottomOf="@+id/textField" />
 
     <Button
         android:id="@+id/usr_dashboard_btn_send"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         android:layout_marginEnd="35dp"
         android:background="@drawable/btn_gradient_bg"
         android:text="send"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/gl_horizontal_30"
-        app:layout_constraintTop_toBottomOf="@+id/usr_dashboard_chkbx_currentlocation" />
+        app:layout_constraintTop_toBottomOf="@+id/newLocationTv" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

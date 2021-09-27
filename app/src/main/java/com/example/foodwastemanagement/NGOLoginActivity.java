@@ -24,7 +24,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AdminLoginActivity extends AppCompatActivity
+public class NGOLoginActivity extends AppCompatActivity
 {
     EditText edttxt_username, edttxt_password;
     TextView txt_movetouserlogin;
@@ -52,8 +52,8 @@ public class AdminLoginActivity extends AppCompatActivity
         txt_movetouserlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AdminLoginActivity.this,UserLogin.class));
-                AdminLoginActivity.this.finish();
+                startActivity(new Intent(NGOLoginActivity.this,UserLogin.class));
+                NGOLoginActivity.this.finish();
             }
         });
     }
@@ -84,14 +84,14 @@ public class AdminLoginActivity extends AppCompatActivity
                     if(object.getBoolean("error"))
                     {
                         // error occured
-                        Toast.makeText(AdminLoginActivity.this,"invalid username or password",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(NGOLoginActivity.this,"invalid username or password",Toast.LENGTH_SHORT).show();
                     }
                     else
                     {
                         // login successfull
-                        Toast.makeText(AdminLoginActivity.this, "login successful ", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(NGOLoginActivity.this, "login successful ", Toast.LENGTH_SHORT).show();
                         //saveLoginDetails();
-                        Intent i = new Intent(AdminLoginActivity.this,AdminDashboardActivity.class);
+                        Intent i = new Intent(NGOLoginActivity.this, NGODashboardActivity.class);
                         startActivity(i);
                         finish();
                     }
@@ -105,7 +105,7 @@ public class AdminLoginActivity extends AppCompatActivity
             @Override
             public void onErrorResponse(VolleyError error) {
                 progressDialog.dismiss();
-                Toast.makeText(AdminLoginActivity.this,error.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(NGOLoginActivity.this,error.getMessage(),Toast.LENGTH_SHORT).show();
 
             }
         })
