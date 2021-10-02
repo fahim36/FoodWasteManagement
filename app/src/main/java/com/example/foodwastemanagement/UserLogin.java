@@ -17,6 +17,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.foodwastemanagement.model.UserLoginDataModel;
+import com.example.foodwastemanagement.model.UserLoginModel;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,6 +34,7 @@ public class UserLogin extends AppCompatActivity implements View.OnClickListener
     TextView txt_register, txt_gotoadminlogin;
     Button btn_login;
     String phoneno, password;
+    SessionHelper sessionHelper;
 
     String url = Constants.URL_string+"user_request_handler.php";
 
@@ -47,6 +52,8 @@ public class UserLogin extends AppCompatActivity implements View.OnClickListener
         btn_login.setOnClickListener(this);
         txt_register.setOnClickListener(this);
         txt_gotoadminlogin.setOnClickListener(this);
+
+        sessionHelper=new SessionHelper(this);
 
     }
 
@@ -73,24 +80,22 @@ public class UserLogin extends AppCompatActivity implements View.OnClickListener
                     public void onResponse(String response) {
                         progressDialog.dismiss();
                         // result from server
-                        try {
-                            JSONObject object = new JSONObject(response);
-                            if(object.getBoolean("error"))
-                            {
-                                Toast.makeText(UserLogin.this,"login error",Toast.LENGTH_SHORT).show();
-                            }
-                            else
-                            {
-                                Toast.makeText(UserLogin.this,"login successfully ",Toast.LENGTH_SHORT).show();
-                                Intent i = new Intent(UserLogin.this,UserDashboardActivity.class);
-                                i.putExtra("phoneno",phoneno);
-
+                        UserLoginModel object = new Gson().fromJson(response, UserLoginModel.class);
+                        if (object != null) {
+                            if (object.getError().equalsIgnoreCase("error")) {
+                                Toast.makeText(UserLogin.this, "login error", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(UserLogin.this, "login successfully ", Toast.LENGTH_SHORT).show();
+                                UserLoginDataModel model = object.getUserLoginDataModel();
+                                sessionHelper.setUserId(model.getUserid());
+                                sessionHelper.setUserName(model.getName());
+                                sessionHelper.setUserType(model.getType());
+                                Intent i = new Intent(UserLogin.this, UserDashboardActivity.class);
+                                i.putExtra("phoneno", phoneno);
                                 startActivity(i);
                             }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
 
+                        }
                     }
                 }, new Response.ErrorListener() {
                     @Override
@@ -119,6 +124,7 @@ public class UserLogin extends AppCompatActivity implements View.OnClickListener
         else if(v == txt_register)
         {
             Intent i = new Intent(this,RegisterUser.class);
+            i.putExtra("userType", "member");
             startActivity(i);
             finish();
         }

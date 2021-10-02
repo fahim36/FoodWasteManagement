@@ -9,6 +9,7 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/registrationlabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="User Registration"
@@ -78,6 +79,7 @@
         android:background="@drawable/gradient_bg_round"
         android:textColor="@color/white"
         android:text="Submit"/>
+
 
     <TextView
         android:layout_marginTop="20dp"

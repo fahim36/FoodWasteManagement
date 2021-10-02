@@ -17,6 +17,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.foodwastemanagement.model.UserLoginDataModel;
+import com.example.foodwastemanagement.model.UserLoginModel;
+import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,10 +30,12 @@ import java.util.Map;
 public class NGOLoginActivity extends AppCompatActivity
 {
     EditText edttxt_username, edttxt_password;
-    TextView txt_movetouserlogin;
+    TextView txt_movetouserlogin,usr_txt_register;
     Button btn_login;
     String url = Constants.URL_string + "admin_request_handler.php";
     String username,password;
+
+    SessionHelper sessionHelper;
 
 
     @Override
@@ -40,6 +45,7 @@ public class NGOLoginActivity extends AppCompatActivity
         edttxt_username = findViewById(R.id.admin_login_edittxt_username);
         edttxt_password = findViewById(R.id.admin_login_edittxt_password);
         btn_login= findViewById(R.id.admin_login_btn_login);
+        usr_txt_register= findViewById(R.id.usr_txt_register);
         txt_movetouserlogin = findViewById(R.id.admin_login_txt_movetouserlogin);
 
         btn_login.setOnClickListener(new View.OnClickListener() {
@@ -48,6 +54,17 @@ public class NGOLoginActivity extends AppCompatActivity
                 sendRequest();
             }
         });
+        usr_txt_register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                    Intent i = new Intent(NGOLoginActivity.this,RegisterUser.class);
+                    i.putExtra("userType", "ngo");
+                    startActivity(i);
+                    finish();
+            }
+        });
+
 
         txt_movetouserlogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,6 +73,8 @@ public class NGOLoginActivity extends AppCompatActivity
                 NGOLoginActivity.this.finish();
             }
         });
+
+        sessionHelper=new SessionHelper(this);
     }
 
     private void sendRequest() {
@@ -79,24 +98,25 @@ public class NGOLoginActivity extends AppCompatActivity
             @Override
             public void onResponse(String response) {
                 progressDialog.dismiss();
-                try {
-                    JSONObject object = new JSONObject(response);
-                    if(object.getBoolean("error"))
-                    {
-                        // error occured
-                        Toast.makeText(NGOLoginActivity.this,"invalid username or password",Toast.LENGTH_SHORT).show();
-                    }
-                    else
-                    {
-                        // login successfull
-                        Toast.makeText(NGOLoginActivity.this, "login successful ", Toast.LENGTH_SHORT).show();
-                        //saveLoginDetails();
-                        Intent i = new Intent(NGOLoginActivity.this, NGODashboardActivity.class);
-                        startActivity(i);
-                        finish();
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                UserLoginModel object = new Gson().fromJson(response, UserLoginModel.class);
+                if(object.getError().equalsIgnoreCase("error"))
+                {
+                    // error occured
+                    Toast.makeText(NGOLoginActivity.this,"invalid username or password",Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    // login successfull
+
+                    Toast.makeText(NGOLoginActivity.this, "login successful ", Toast.LENGTH_SHORT).show();
+                    UserLoginDataModel model = object.getUserLoginDataModel();
+                    sessionHelper.setUserId(model.getUserid());
+                    sessionHelper.setUserName(model.getName());
+                    sessionHelper.setUserType(model.getType());
+                    sessionHelper.setFirebaseToken(model.getUsertoken()!=null ? model.getUsertoken() : "");
+                    Intent i = new Intent(NGOLoginActivity.this, NGODashboardActivity.class);
+                    startActivity(i);
+                    finish();
                 }
 
 
@@ -123,14 +143,5 @@ public class NGOLoginActivity extends AppCompatActivity
         queue.add(stringRequest);
     }
 
-    private void saveLoginDetails()
-    {
-        /*SharedPreferences sharedPreferences = getSharedPreferences("login",MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("who","admin");
-        editor.putString("id",username);
-        editor.putString("password",password);
-        editor.apply();*/
-    }
 }
 

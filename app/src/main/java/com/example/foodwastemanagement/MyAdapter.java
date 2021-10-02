@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.foodwastemanagement.model.ListItemModel;
+
 import java.util.ArrayList;
 
 
@@ -20,17 +22,17 @@ import java.util.ArrayList;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     private final Context context;
-    private ArrayList<ListItem> list;
+    private ArrayList<ListItemModel> list;
 
-    public MyAdapter(ArrayList<ListItem> listItems,Context c)
+    public MyAdapter(ArrayList<ListItemModel> listItemModels, Context c)
     {
-        list = listItems;
+        list = listItemModels;
         context = c;
     }
 
-    public void addAll(ArrayList<ListItem> listItems)
+    public void addAll(ArrayList<ListItemModel> listItemModels)
     {
-        list = listItems;
+        list = listItemModels;
         notifyDataSetChanged();
     }
 

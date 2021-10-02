@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
+import com.example.foodwastemanagement.model.ListItemModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
@@ -51,14 +52,15 @@ public class NGODashboardActivity extends AppCompatActivity
 {
 
     RecyclerView recyclerView;
-    ArrayList<ListItem> list;
+    ArrayList<ListItemModel> list;
     MyAdapter adapter;
     private Paint p = new Paint();
     private String url = Constants.URL_string+"admin_request_handler.php";
     private static final String TAG = "PushNotification";
     private static final String CHANNEL_ID = "101";
     View viewforsnackbar;
-    ArrayList<ListItem> rlist;
+    SessionHelper sessionHelper;
+    ArrayList<ListItemModel> rlist;
 
 
     @Override
@@ -74,6 +76,8 @@ public class NGODashboardActivity extends AppCompatActivity
         recyclerView.setLayoutManager(layoutManager);
         getAndLoadData();
         viewforsnackbar = findViewById(android.R.id.content);
+
+        sessionHelper=new SessionHelper(this);
 
     }
     public void showPopup(View v) {
@@ -139,7 +143,7 @@ public class NGODashboardActivity extends AppCompatActivity
         // getting jsonarry from rlist
         Gson gson = new Gson();
         final JsonArray jsonarray = new JsonArray();
-        for(ListItem i : rlist)
+        for(ListItemModel i : rlist)
         {
             String jsonobj = gson.toJson(i);
             jsonarray.add(jsonobj);
@@ -157,7 +161,7 @@ public class NGODashboardActivity extends AppCompatActivity
                     JSONObject object = new JSONObject(response);
                     if(!object.getBoolean("error"))
                     {
-                        Toast.makeText(NGODashboardActivity.this,"saved successfully",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(NGODashboardActivity.this,"Saved Successfully",Toast.LENGTH_SHORT).show();
                     }
                     else
                         Toast.makeText(NGODashboardActivity.this, "some error has occured", Toast.LENGTH_SHORT).show();
@@ -219,7 +223,7 @@ public class NGODashboardActivity extends AppCompatActivity
 
                             for(int i = 0; i< jsonArray.length(); i++)
                             {
-                                ListItem item = gson.fromJson(jsonArray.get(i).toString(),ListItem.class);
+                                ListItemModel item = gson.fromJson(jsonArray.get(i).toString(), ListItemModel.class);
                                 list.add(item);
                             }
                             adapter = new MyAdapter(list, NGODashboardActivity.this);
@@ -277,7 +281,7 @@ public class NGODashboardActivity extends AppCompatActivity
                 if (direction == ItemTouchHelper.LEFT || direction == ItemTouchHelper.RIGHT)
                 {
                     //delete user from list
-                    final ListItem backedupitem = list.get(position);
+                    final ListItemModel backedupitem = list.get(position);
                     list.remove(position);
                     rlist.add(backedupitem);
                     adapter.notifyItemRemoved(position);
@@ -301,6 +305,7 @@ public class NGODashboardActivity extends AppCompatActivity
                             if (event == Snackbar.Callback.DISMISS_EVENT_TIMEOUT) {
                                 // Snackbar closed on its own
                                 //todo delete method here
+                                saveChangesOnServer();
                                 Toast.makeText(NGODashboardActivity.this,"Success",Toast.LENGTH_SHORT).show();
                             }
                         }
@@ -341,6 +346,7 @@ public class NGODashboardActivity extends AppCompatActivity
                //Token
                String token = task.getResult();
                Log.d(TAG, "onComplete: " + token);
+               updateToken(token);
            }
        });
    }
@@ -356,9 +362,44 @@ public class NGODashboardActivity extends AppCompatActivity
             channel.setDescription(description);
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
-
-            getToken();
         }
+        getToken();
+    }
+    private  void updateToken(String token){
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("contacting server...");
+        progressDialog.show();
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                progressDialog.dismiss();
+                try {
+                    JSONObject object = new JSONObject(response);
+                    Log.d(TAG, "Token:" + object.getString("message"));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressDialog.dismiss();
+                Toast.makeText(NGODashboardActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("request_type", "update_token");
+                params.put("token", token);
+                params.put("userid", sessionHelper.getUserId());
+                return params;
+            }
+        };
+
+        requestQueue.add(stringRequest);
     }
 
 }

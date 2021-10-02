@@ -60,10 +60,20 @@
         android:text="login" />
 
     <TextView
+        android:id="@+id/usr_txt_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="New user ?" />
+
+    <TextView
         android:id="@+id/admin_login_txt_movetouserlogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="go to user login"
+        android:text="Go to user login"
         android:layout_marginTop="30dp"
         android:textColor="@color/whitish_green"
         android:layout_gravity="center"

@@ -94,13 +94,24 @@ public class UserDashboardActivity extends AppCompatActivity {
     {
         str_fooddesc = edttxt_foodesc.getText().toString().trim();
 
+        if(str_fooddesc.isEmpty()){
+            Toast.makeText(UserDashboardActivity.this, "Please fill out every input field", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         if (!bool_usecurrentlocation)
         {
             str_locationdesc = edttxt_loctiondesc.getText().toString();
+
+            if(str_locationdesc.isEmpty()){
+                Toast.makeText(UserDashboardActivity.this, "Please fill out every input field", Toast.LENGTH_SHORT).show();
+                return;
+            }
             sendRequest();
         }
         else
         {
+
             //displaying progress
             final ProgressDialog progressDialog1 = new ProgressDialog(this);
             progressDialog1.setMessage("getting your location from gps....\n please be patient.");
@@ -154,7 +165,7 @@ public class UserDashboardActivity extends AppCompatActivity {
     private void sendRequest()
     {
         final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("getting your location from gps....\n please be patient.");
+        progressDialog.setMessage("Contacting server.\nPlease be patient.");
         progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.show();
 
@@ -192,7 +203,7 @@ public class UserDashboardActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> params = new HashMap<>();
-                params.put("request_type","getuserinfo");
+                params.put("request_type","addpickuprequest");
                 params.put("food_description",str_fooddesc);
                 params.put("phoneno",str_phoneno);
                 params.put("iscurrentlocation",bool_usecurrentlocation+"");

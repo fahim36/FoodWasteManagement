@@ -7,8 +7,10 @@ import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+import com.example.foodwastemanagement.model.NGOPushModel;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+import com.google.gson.Gson;
 
 
 public class MyFirebaseServices extends FirebaseMessagingService {
@@ -19,7 +21,7 @@ public class MyFirebaseServices extends FirebaseMessagingService {
     @Override
     public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
         showNotification(remoteMessage.getNotification().getTitle(),remoteMessage.getNotification().getBody());
-        //remoteMessage.getData().get("data");
+        NGOPushModel model = new Gson().fromJson(remoteMessage.getData().get("data"),NGOPushModel.class);
         //todo UI dialog
     }
 

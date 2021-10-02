@@ -2,7 +2,9 @@ package com.example.foodwastemanagement;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -24,14 +26,16 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RegisterUser extends AppCompatActivity implements View.OnClickListener{
+public class RegisterUser extends AppCompatActivity implements View.OnClickListener {
 
     EditText eusername, eemail, ephone, epass, econfirmpass;
     Button btn_register;
-    TextView txt_alreadyreg;
+    TextView txt_alreadyreg, registrationlabel;
 
     String username, email, phoneno, pass, confpass;
-    String registerationUrl = Constants.URL_string+"user_request_handler.php";
+    String registerationUrl = Constants.URL_string + "user_request_handler.php";
+
+    boolean isUser;
 
 
     @Override
@@ -45,25 +49,31 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
         epass = findViewById(R.id.regusr_password);
         econfirmpass = findViewById(R.id.regusr_confpassword);
         btn_register = findViewById(R.id.regusr_btn_submit);
+        registrationlabel = findViewById(R.id.registrationlabel);
         txt_alreadyreg = findViewById(R.id.regusr_txt_alreadyreg);
 
         btn_register.setOnClickListener(this);
         txt_alreadyreg.setOnClickListener(this);
+
+        isUser = getIntent().getExtras().get("userType").equals("member");
+
+        if (!isUser) {
+            registerationUrl = Constants.URL_string + "admin_request_handler.php";
+            registrationlabel.setText("NGO Registration");
+            eusername.setHint("NGO Name");
+        }
     }
 
     @Override
-    public void onClick(View v)
-    {
-        if(v == btn_register)
-        {
+    public void onClick(View v) {
+        if (v == btn_register) {
             username = eusername.getText().toString().trim();
             email = eemail.getText().toString().trim();
             phoneno = ephone.getText().toString().trim();
             pass = epass.getText().toString().trim();
             confpass = econfirmpass.getText().toString().trim();
 
-            if(!checkIfEmpty() && isPassEqual())
-            {
+            if (!checkIfEmpty() && isPassEqual()) {
                 final ProgressDialog progressDialog = new ProgressDialog(this);
                 progressDialog.setMessage("contacting server...");
                 progressDialog.show();
@@ -75,58 +85,65 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
                         progressDialog.dismiss();
                         try {
                             JSONObject object = new JSONObject(response);
-                            if(!object.getBoolean("error"))
-                            {
-                                Toast.makeText(RegisterUser.this,object.getString("message"),Toast.LENGTH_SHORT).show();
-                                Intent i = new Intent(RegisterUser.this, UserLogin.class);
-                                startActivity(i);
-                                finish();
-                            }
-                            else Toast.makeText(RegisterUser.this,object.getString("message"),Toast.LENGTH_SHORT).show();
+                            if (!object.getBoolean("error")) {
+                                Toast.makeText(RegisterUser.this, object.getString("message"), Toast.LENGTH_SHORT).show();
+                                if (isUser) {
+                                    Intent i = new Intent(RegisterUser.this, UserLogin.class);
+                                    startActivity(i);
+                                    finish();
+                                }else{
+                                    Intent i = new Intent(RegisterUser.this, NGOLoginActivity.class);
+                                    startActivity(i);
+                                    finish();
+                                }
+                            } else
+                                Toast.makeText(RegisterUser.this, object.getString("message"), Toast.LENGTH_SHORT).show();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        //result from server
-
                     }
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         progressDialog.dismiss();
-                        Toast.makeText(RegisterUser.this,error.getMessage(),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterUser.this, error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
-                })
-                {
+                }) {
                     @Override
                     protected Map<String, String> getParams() throws AuthFailureError {
-                        Map<String,String> params = new HashMap<>();
-                        params.put("request_type","registration");
-                        params.put("username",username);
-                        params.put("email",email);
-                        params.put("phoneno",phoneno);
-                        params.put("password",pass);
+                        Map<String, String> params = new HashMap<>();
+                        params.put("request_type", "registration");
+                        params.put("username", username);
+                        params.put("email", email);
+                        params.put("phoneno", phoneno);
+                        params.put("password", pass);
                         return params;
                     }
                 };
 
                 requestQueue.add(stringRequest);
+            } else if (checkIfEmpty())
+                Toast.makeText(this, "please fill all fields", Toast.LENGTH_SHORT).show();
+            else if (!isPassEqual())
+                Toast.makeText(this, "password mismatch", Toast.LENGTH_SHORT).show();
+        } else if (v == txt_alreadyreg) {
+            if (isUser) {
+                Intent i = new Intent(this, UserLogin.class);
+                startActivity(i);
+                finish();
+            }else{
+                Intent i = new Intent(this, NGOLoginActivity.class);
+                startActivity(i);
+                finish();
             }
-            else if(checkIfEmpty())Toast.makeText(this,"please fill all fields",Toast.LENGTH_SHORT).show();
-            else if(!isPassEqual())Toast.makeText(this,"password mismatch",Toast.LENGTH_SHORT).show();
-        }
-        else if(v == txt_alreadyreg)
-        {
-            Intent i = new Intent(this, UserLogin.class);
-            startActivity(i);
-            finish();
         }
     }
 
-    private boolean checkIfEmpty(){
+    private boolean checkIfEmpty() {
         return username.equals("") || email.equals("") || phoneno.equals("") || pass.equals("") || confpass.equals("");
     }
 
-    private boolean isPassEqual(){
+    private boolean isPassEqual() {
         return pass.equals(confpass);
     }
 }
