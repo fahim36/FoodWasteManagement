@@ -3,11 +3,44 @@ package com.example.foodwastemanagement.model;
 
 public class ListItemModel {
 
-    private String locationtext;
+    private String itemDetails;
     private String longitude;
     private String latitude;
     private String name;
     private String fooddesc;
+    private String pickupid;
+    private String phoneno;
+    private String pickupstatus;
+    private String timestamp;
+
+    public String getPickupStatus() {
+        return pickupstatus;
+    }
+
+    public void setPickupStatus(String pickupStatus) {
+        this.pickupstatus = pickupStatus;
+    }
+
+
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
+    }
+
+
+
+    public String getPickupid() {
+        return pickupid;
+    }
+
+    public void setPickupid(String pickupid) {
+        this.pickupid = pickupid;
+    }
+
+
 
     public String getPhoneno() {
         return phoneno;
@@ -17,14 +50,14 @@ public class ListItemModel {
         this.phoneno = phoneno;
     }
 
-    private String phoneno;
+
 
     public String getLocationtext() {
-        return locationtext;
+        return itemDetails;
     }
 
     public void setLocationtext(String locationtext) {
-        this.locationtext = locationtext;
+        this.itemDetails = locationtext;
     }
 
     public String getLongitude() {

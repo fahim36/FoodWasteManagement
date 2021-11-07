@@ -87,54 +87,93 @@ if($con)
 				$output['error'] = true;
 			}
 		}
-	}else if($_REQUEST['request_type'] == 'getlist')
+	}else if($_REQUEST['request_type'] == 'cancelpickuprequest')
+	{		
+		if (isset($_POST["ngoid"]) && isset($_POST["pickupid"])){
+			
+		$table = "ngocancelpickuptable";
+		$ngoid = $_POST['ngoid'];
+		$pickupid = $_POST['pickupid'];
+		
+		$query = "insert into `$table` (`ngoid`,`pickupid`) values('$ngoid','$pickupid')";
+		
+		$queryres = mysqli_query($con,$query);
+			if($queryres)
+			{	
+				$output['message'] = 'Pickup request cancelled successfully';
+				$output['error']=false;
+			}
+			else {
+			$output['error']=true;
+			$output['message'] = 'Something went wrong';
+			}
+		}
+		else {
+		$output['error']=true;
+		$output['message'] = 'Something went wrong';
+		}	
+	}
+	else if($_REQUEST['request_type'] == 'getlist')
    {
    		$table = 'userrequesttable';
    		$query = "select a.username, b.* from userinformationtable a, userrequesttable b where a.phoneno = b.phoneno";
 
    		$queryres = mysqli_query($con,$query);
-   		if($queryres)
-   		{
+		
+   		if($queryres && isset($_POST["ngoid"]))
+   		{		
+				$table = "ngocancelpickuptable";
+				$ngoid = $_POST['ngoid'];
+				$query = "select  `pickupid` from `ngocancelpickuptable` where `ngoid` = '$ngoid'";
+		if($queryres)
+			{
    			$list = array(array());
 			$i = 0;
 				while($row = mysqli_fetch_assoc($queryres))
 				{
-					$list[$i]['name'] = $row['username'];
-					$list[$i]['phoneno'] = $row['phoneno'];
-				    $list[$i]['fooddesc'] =	$row['fooddescription'];
-					$list[$i]['locationtext'] = $row['locationtext'];
-					$list[$i]['longitude']=$row['longitude'];
-					$list[$i]['latitude']=$row['latitude'];
-					$i++;			
+							$list[$i]['name'] = $row['username'];
+							$list[$i]['phoneno'] = $row['phoneno'];
+							$list[$i]['pickupid'] = $row['pickupid'];
+							$list[$i]['fooddesc'] =	$row['fooddescription'];
+							$list[$i]['itemdetails'] = $row['itemdetails'];
+							$list[$i]['longitude']=$row['longitude'];
+							$list[$i]['latitude']=$row['latitude'];
+							$list[$i]['timestamp']=$row['timestamp'];
+							$list[$i]['pickupstatus']=$row['pickupstatus'];
+							$i++;
 				}
-
-			$output['list'] = $list;
-			$output['error'] = false;
-			$output['message'] = "list loaded successfully";
-   		}
-   		else 
+				$output['list'] = $list;
+				$output['error'] = false;
+				$output['message'] = "List loaded successfully";
+				}
+			else 
+			{
+   			$output['error']=true;
+   			$output['message'] = "Cannot execute query";
+			}
+		}
+		else 
    		{
    			$output['error']=true;
-   			$output['message'] = "cannot execute query";
+   			$output['message'] = "Cannot execute query";
    		}	
    }
    else if($_REQUEST['request_type'] == "removerows")
    {
    	  $list = json_decode($_REQUEST['removeditemslist']);
-   	 /* for($i = 0; $i < count($list,COUNT_NORMAL); $i++)
-   	  {
-   	  	
-   	  }*/
+   	 
    	  foreach ($list as $k)
    	  {
    	  	$list1=json_decode($k,true);
    	  	$phoneno = $list1['phoneno'];
    	  	$fooddesc = $list1['fooddesc'];
-   	  	$query="delete from `userrequesttable` where phoneno='$phoneno' and fooddescription='$fooddesc'";
+		$pickupid = $list1['pickupid'];
+   	  	$query="delete from `userrequesttable` where pickupid='$pickupid' ";
    	  	$queryres = mysqli_query($con,$query);
    	  	if($queryres)
    	  	{
    	  		$output['error'] = false;
+			$output['message'] = "Request Deleted Successfully";
    	  	}
    	  	else 
    	  		{
@@ -144,6 +183,35 @@ if($con)
    	  }
    	  
    	  //$output["message"]="hello".$listi['phoneno'];
+   }
+    else if($_REQUEST['request_type'] == "updatestatus")
+   {
+   	 if (isset($_POST["pickupid"]) && isset($_POST["pickupstatus"])){
+			
+		$table = "userrequesttable";
+		
+		$pickupid = $_POST['pickupid'];
+		$pickupstatus = $_POST['pickupstatus'];
+		
+		
+		$query ="update $table set pickupstatus = '$pickupstatus' where pickupid='$pickupid'";
+		
+		$queryres = mysqli_query($con,$query);
+			if($queryres)
+			{	
+				$output['message'] = 'Pickup status updated';
+				$output['error']=false;
+			}
+			else {
+			$output['error']=true;
+			$output['message'] = 'Something went wrong';
+			}
+		}
+		else {
+		$output['error']=true;
+		$output['message'] = 'Something went wrong';
+		}	
+   	  
    }
 
 }

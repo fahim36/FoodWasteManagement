@@ -23,11 +23,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     private final Context context;
     private ArrayList<ListItemModel> list;
+    private OnItemClickListener listener;
 
-    public MyAdapter(ArrayList<ListItemModel> listItemModels, Context c)
+    public MyAdapter(ArrayList<ListItemModel> listItemModels, Context c,OnItemClickListener listener)
     {
         list = listItemModels;
         context = c;
+        this.listener=listener;
     }
 
     public void addAll(ArrayList<ListItemModel> listItemModels)
@@ -120,6 +122,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 dialog.show();
             }
         });
+        holder.rview_tv_accept.setOnClickListener(v -> listener.onItemClick(
+                v, list.get(position), position));
 
     }
 
@@ -132,7 +136,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     {
 
         ImageView imgview_location, imgview_call, imgview_delete;
-        TextView txtview_name, txtview_fooddesc;
+        TextView txtview_name, txtview_fooddesc,rview_tv_accept;
 
          MyViewHolder(View itemView)
         {
@@ -142,6 +146,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 //            imgview_delete = itemView.findViewById(R.id.rview_iv_delete);
             txtview_fooddesc = itemView.findViewById(R.id.rview_tv_fooditem);
             txtview_name = itemView.findViewById(R.id.rview_tv_name);
+            rview_tv_accept = itemView.findViewById(R.id.rview_tv_accept);
 
         }
     }

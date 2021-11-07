@@ -40,7 +40,7 @@ if($con)
 				$output['error']=false;
 			}
 			else{
-				$output['message'] = 'you might be already registered or the username is taken . please consider login';
+				$output['message'] = 'You might be already registered or the username is taken.';
 				$output['error'] = true;
 			}
 		}
@@ -81,20 +81,14 @@ if($con)
 			// save latitude and longitude
 			$longitude = $_POST['longitude'];
 			$latitude = $_POST['latitude'];
-			$query = "insert into `$table` (`phoneno`,`latitude`,`longitude`,`fooddescription`,`pickupid`) values('$phoneno','$latitude','$longitude','$fooddesc','$pickupid')";
-		}
-		else
-		{
-			// save location text
-			$locationtext = $_POST['locationtext'];
-			
-			$query = "insert into `$table` (`phoneno`,`locationtext`,`fooddescription`,`pickupid`) values('$phoneno','$locationtext','$fooddesc','$pickupid')";
+			$itemdetails = $_POST['itemdetails'];
+			$query = "insert into `$table` (`phoneno`,`latitude`,`longitude`,`fooddescription`,`pickupid`,`itemdetails`) values('$phoneno','$latitude','$longitude','$fooddesc','$pickupid','$itemdetails')";
 		}
 		$queryres = mysqli_query($con,$query);
 		if($queryres)
 		{	
 					$list['phoneno'] = $phoneno;
-					$list['locationtext'] = $locationtext;
+					$list['itemdetails'] = $itemdetails;
 				    $list['pickupid'] =	$pickupid;
 					$list['fooddesc']  = $fooddesc; 
 					if($iscurrentlocation == "true")
@@ -122,11 +116,29 @@ if($con)
 		}
 		else $output['error']=true;
 	}
-}
-else
-{
-	$output['message'] = 'cannot connect to database';
-	$output['error'] = true;
+}else if($request_type == "getallcancelledpickuprequest"){
+		
+		$table = "ngocancelpickuptable";
+		$ngoid = $_POST['ngoid'];
+		
+		$query = "select `pickupid` from `ngocancelpickuptable` where `ngoid` = '$ngoid' ";
+			$tokenlist= array();
+			$i=0;
+			if($queryres && isset($_POST["ngoid"])){
+				if(mysqli_num_rows($queryres)>0){
+					while($row = mysqli_fetch_assoc($queryres)){
+						$tokenlist[$i]= $row['usertoken'];
+						$i++;
+					}
+					$output['data'] = $tokenlist;
+					$output['error']=false;
+				}
+			}
+		else {
+			$output['error']=true;
+			$output['message'] = 'Something went wrong';
+		}
+	
 }
 
 echo json_encode($output);
@@ -141,7 +153,7 @@ function sendFCM($tokenlist,$list) {
 
   // Compile headers in one variable
   $headers = array (
-    'Authorization:key=' . $apiKey,
+    'Authorization:key=' .$apiKey,
     'Content-Type:application/json'
   );
 

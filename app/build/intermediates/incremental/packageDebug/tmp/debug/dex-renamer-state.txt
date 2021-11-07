@@ -1,4 +1,4 @@
-#Sat Oct 02 22:53:41 BDT 2021
+#Mon Nov 08 01:42:42 BDT 2021
 base.0=H\:\\Project\\Git\\Food Waste Management\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

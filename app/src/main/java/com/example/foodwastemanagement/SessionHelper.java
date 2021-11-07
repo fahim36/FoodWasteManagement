@@ -83,8 +83,8 @@ public class SessionHelper {
         return preferences.getString (KEY_LAST_KNOWN_LON, "");
     }
 
-    public void setLastKnownLON(String KEY_LAST_KNOWN_LON) {
-        editor.putString (KEY_LAST_KNOWN_LON, KEY_LAST_KNOWN_LON);
+    public void setLastKnownLON(String lastKnownLon) {
+        editor.putString (KEY_LAST_KNOWN_LON, lastKnownLon);
         editor.commit ();
     }
 
@@ -92,8 +92,8 @@ public class SessionHelper {
         return preferences.getString (KEY_LAST_KNOWN_LAT, "");
     }
 
-    public void setLastKnownLAT(String KEY_LAST_KNOWN_LAT) {
-        editor.putString (KEY_LAST_KNOWN_LAT, KEY_LAST_KNOWN_LAT);
+    public void setLastKnownLAT(String lastKnownLAT) {
+        editor.putString (KEY_LAST_KNOWN_LAT, lastKnownLAT);
         editor.commit ();
     }
 }

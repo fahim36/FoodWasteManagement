@@ -3,12 +3,14 @@ package com.example.foodwastemanagement;
 import android.annotation.SuppressLint;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
 import com.example.foodwastemanagement.model.ListItemModel;
+import com.example.foodwastemanagement.model.NGOPushModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
@@ -18,6 +20,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Build;
 import android.os.Bundle;
+
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -37,9 +42,13 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.messaging.RemoteMessage;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -80,6 +89,75 @@ public class NGODashboardActivity extends AppCompatActivity
         sessionHelper=new SessionHelper(this);
 
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(RemoteMessage remoteMessage) {
+       //todo
+        if(!sessionHelper.getUserType().equalsIgnoreCase("ngo"))
+            return;
+
+        showNotification(remoteMessage.getNotification().getTitle(),remoteMessage.getNotification().getBody());
+        NGOPushModel model = new Gson().fromJson(remoteMessage.getData().get("data"),NGOPushModel.class);
+
+        DialogWithButtons dialog = new DialogWithButtons(this, new DialogWithButtons.OnDialogButtonClickListener() {
+            @Override
+            public void onPositiveClicked(@NonNull DialogWithButtons d) {
+                        d.dismiss();
+
+            }
+
+            @Override
+            public void onNegativeClicked(@NonNull DialogWithButtons d) {
+                ListItemModel listItemModel = new ListItemModel();
+                listItemModel.setPickupid(model.getPickupid());
+                rlist.add(listItemModel);
+                saveChangesOnServer();
+                d.dismiss();
+            }
+
+            @Override
+            public void onNeutralClicked(@NonNull DialogWithButtons d) {
+                d.dismiss();
+            }
+        });
+
+        dialog.show();
+        dialog.setTitle("Pickup Alert");
+        dialog.setSubtitle("You have a new pickup request in your area");
+        dialog.setCancelable(false);
+    }
+    private void showNotification(String title,String message){
+
+        Intent intent = new Intent(this, NGODashboardActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
+                .setSmallIcon(R.drawable.logo_icon)
+                .setContentTitle(title)
+                .setContentText(message)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                // Set the intent that will fire when the user taps the notification
+                .setContentIntent(pendingIntent)
+                .setAutoCancel(true);
+
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+
+        // notificationId is a unique int for each notification that you must define
+        notificationManager.notify(1, builder.build());
+    }
+
     public void showPopup(View v) {
 
         //todo menu button add
@@ -132,23 +210,10 @@ public class NGODashboardActivity extends AppCompatActivity
 
         //todo bugfix
 
-        final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("saving on server...");
-        progressDialog.setCanceledOnTouchOutside(false);
-        progressDialog.show();
-
         // if rlist is empty then return
-        if(rlist.size() == 0){progressDialog.dismiss(); return;}
+        if(rlist.size() == 0){return;}
 
-        // getting jsonarry from rlist
-        Gson gson = new Gson();
-        final JsonArray jsonarray = new JsonArray();
-        for(ListItemModel i : rlist)
-        {
-            String jsonobj = gson.toJson(i);
-            jsonarray.add(jsonobj);
-        }
-        Log.d("saiful",jsonarray.toString());
+        String pickupid=rlist.get(0).getPickupid();
 
 
         //sending request and getting response using volley
@@ -156,25 +221,26 @@ public class NGODashboardActivity extends AppCompatActivity
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                progressDialog.dismiss();
+
                 try {
                     JSONObject object = new JSONObject(response);
                     if(!object.getBoolean("error"))
                     {
-                        Toast.makeText(NGODashboardActivity.this,"Saved Successfully",Toast.LENGTH_SHORT).show();
+       //                 Toast.makeText(NGODashboardActivity.this,"Saved Successfully",Toast.LENGTH_SHORT).show();
+                        getAndLoadData();
                     }
-                    else
+                    else {
                         Toast.makeText(NGODashboardActivity.this, "some error has occured", Toast.LENGTH_SHORT).show();
-                    Log.d("response",object.getString("message"));
+
+                        Log.d("response", object.getString("message"));
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                progressDialog.dismiss();
                 Toast.makeText(NGODashboardActivity.this,error.getMessage(),Toast.LENGTH_SHORT).show();
             }
         })
@@ -182,8 +248,9 @@ public class NGODashboardActivity extends AppCompatActivity
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> params = new HashMap<>();
-                params.put("request_type","removerows");
-                params.put("removeditemslist",jsonarray.toString());
+                params.put("request_type","cancelpickuprequest");
+                params.put("pickupid",pickupid);
+                params.put("ngoid",sessionHelper.getUserId());
                 return params;
             }
         };
@@ -198,7 +265,7 @@ public class NGODashboardActivity extends AppCompatActivity
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("contacting server...");
         progressDialog.setCanceledOnTouchOutside(false);
-        progressDialog.show();
+
 
         final Gson gson = new Gson();
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -220,13 +287,24 @@ public class NGODashboardActivity extends AppCompatActivity
                         }
                         else{
                             JSONArray jsonArray = object.getJSONArray("list");
-
+                            list=new ArrayList<>();
+                            Toast.makeText(NGODashboardActivity.this,object.getString("message"),Toast.LENGTH_SHORT).show();
                             for(int i = 0; i< jsonArray.length(); i++)
                             {
                                 ListItemModel item = gson.fromJson(jsonArray.get(i).toString(), ListItemModel.class);
-                                list.add(item);
+                                if(item.getPickupStatus()!=null){
+                                    if(!item.getPickupStatus().equalsIgnoreCase("Accepted"))
+                                        list.add(item);
+                                }else{
+                                        list.add(item);
+                                }
+
                             }
-                            adapter = new MyAdapter(list, NGODashboardActivity.this);
+                            adapter = new MyAdapter(list, NGODashboardActivity.this, (view, item, position) -> {
+                                ListItemModel listItemModel = (ListItemModel) item;
+                                acceptPickupRequest(listItemModel);
+
+                            });
                             recyclerView.setAdapter(adapter);
                             adapter.notifyDataSetChanged();
 
@@ -255,6 +333,7 @@ public class NGODashboardActivity extends AppCompatActivity
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> params = new HashMap<>();
                 params.put("request_type","getlist");
+                params.put("ngoid",sessionHelper.getUserId());
                 return params;
             }
         };
@@ -287,30 +366,34 @@ public class NGODashboardActivity extends AppCompatActivity
                     adapter.notifyItemRemoved(position);
                     adapter.notifyItemRangeChanged(position, list.size());
 
-
-                    Snackbar snackbar = Snackbar.make(viewforsnackbar,"Do you want to undelete ?",Snackbar.LENGTH_SHORT);
-                    snackbar.setAction("UNDO", new View.OnClickListener()
-                    {
+                    DialogWithButtons dialog = new DialogWithButtons(NGODashboardActivity.this, new DialogWithButtons.OnDialogButtonClickListener() {
                         @Override
-                        public void onClick(View v) {
+                        public void onPositiveClicked(@NonNull DialogWithButtons d) {
+                            saveChangesOnServer();
+                            Toast.makeText(NGODashboardActivity.this,"Success",Toast.LENGTH_SHORT).show();
+                            d.dismiss();
+                        }
+                        @Override
+                        public void onNegativeClicked(@NonNull DialogWithButtons d) {
                             list.add(position,backedupitem);
                             rlist.remove(backedupitem);
                             adapter.notifyItemInserted(position);
+                            d.dismiss();
                         }
-                    });
-                    snackbar.addCallback(new Snackbar.Callback() {
 
                         @Override
-                        public void onDismissed(Snackbar snackbar, int event) {
-                            if (event == Snackbar.Callback.DISMISS_EVENT_TIMEOUT) {
-                                // Snackbar closed on its own
-                                //todo delete method here
-                                saveChangesOnServer();
-                                Toast.makeText(NGODashboardActivity.this,"Success",Toast.LENGTH_SHORT).show();
-                            }
+                        public void onNeutralClicked(@NonNull DialogWithButtons d) {
+                            d.dismiss();
                         }
                     });
-                    snackbar.show();
+
+                    dialog.show();
+                    dialog.setTitle("Confirmation");
+                    dialog.setPositiveButtonLabel("Yes");
+                    dialog.setNegativeButtonLabel("No");
+                    dialog.setSubtitle("Do you really want to cancel this pickup request ?");
+                    dialog.setCancelable(false);
+
                 }
             }
 
@@ -400,6 +483,50 @@ public class NGODashboardActivity extends AppCompatActivity
         };
 
         requestQueue.add(stringRequest);
+    }
+
+    private void acceptPickupRequest(ListItemModel model)
+    {
+
+        //sending request and getting response using volley
+        RequestQueue queue = Volley.newRequestQueue(this);
+        StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                try {
+                    JSONObject object = new JSONObject(response);
+                    if(!object.getBoolean("error"))
+                    {
+                        Toast.makeText(NGODashboardActivity.this,"Successfully accepted the request",Toast.LENGTH_SHORT).show();
+                        getAndLoadData();
+                    }
+                    else {
+                        Toast.makeText(NGODashboardActivity.this, "some error has occured", Toast.LENGTH_SHORT).show();
+
+                        Log.d("response", object.getString("message"));
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(NGODashboardActivity.this,error.getMessage(),Toast.LENGTH_SHORT).show();
+            }
+        })
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params = new HashMap<>();
+                params.put("request_type","updatestatus");
+                params.put("pickupid",model.getPickupid());
+                params.put("pickupstatus","Accepted");
+                return params;
+            }
+        };
+        queue.add(request);
     }
 
 }
