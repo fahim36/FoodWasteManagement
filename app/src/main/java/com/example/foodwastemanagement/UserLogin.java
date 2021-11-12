@@ -1,8 +1,14 @@
 package com.example.foodwastemanagement;
 
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Intent;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,11 +23,16 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.foodwastemanagement.model.ListItemModel;
+import com.example.foodwastemanagement.model.NGOPushModel;
 import com.example.foodwastemanagement.model.UserLoginDataModel;
 import com.example.foodwastemanagement.model.UserLoginModel;
+import com.google.firebase.messaging.RemoteMessage;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -35,6 +46,7 @@ public class UserLogin extends AppCompatActivity implements View.OnClickListener
     Button btn_login;
     String phoneno, password;
     SessionHelper sessionHelper;
+    private static final String CHANNEL_ID = "101";
 
     String url = Constants.URL_string+"user_request_handler.php";
 
@@ -56,8 +68,62 @@ public class UserLogin extends AppCompatActivity implements View.OnClickListener
         sessionHelper=new SessionHelper(this);
 
     }
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(RemoteMessage remoteMessage) {
 
-    @Override
+        if(!sessionHelper.getUserType().equalsIgnoreCase("ngo")) {
+
+            showNotification(remoteMessage.getNotification().getTitle(), remoteMessage.getNotification().getBody());
+            NGOPushModel model = new Gson().fromJson(remoteMessage.getData().get("data"), NGOPushModel.class);
+
+            DialogWithButtons dialog = new DialogWithButtons(this, new DialogWithButtons.OnDialogButtonClickListener() {
+                @Override
+                public void onPositiveClicked(@NonNull DialogWithButtons d) {
+
+                    d.dismiss();
+
+                }
+
+                @Override
+                public void onNegativeClicked(@NonNull DialogWithButtons d) {
+
+                    d.dismiss();
+                }
+
+                @Override
+                public void onNeutralClicked(@NonNull DialogWithButtons d) {
+                    d.dismiss();
+                }
+            });
+
+            dialog.show();
+            dialog.setTitle("Pickup Alert");
+            dialog.setSubtitle("NGO has accepted your pickup request.Please wait for someone to collect");
+            dialog.goneNegativeButton();
+            dialog.setCancelable(false);
+        }
+    }
+    private void showNotification(String title,String message) {
+
+        Intent intent = new Intent(this, NGODashboardActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
+                .setSmallIcon(R.drawable.logo_icon)
+                .setContentTitle(title)
+                .setContentText(message)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                // Set the intent that will fire when the user taps the notification
+                .setContentIntent(pendingIntent)
+                .setAutoCancel(true);
+
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+
+        // notificationId is a unique int for each notification that you must define
+
+    }
+        @Override
     public void onClick(View v)
     {
         if(v == btn_login)
@@ -82,7 +148,7 @@ public class UserLogin extends AppCompatActivity implements View.OnClickListener
                         // result from server
                         UserLoginModel object = new Gson().fromJson(response, UserLoginModel.class);
                         if (object != null) {
-                            if (object.getError().equalsIgnoreCase("error")) {
+                            if (object.getError().equalsIgnoreCase("true")) {
                                 Toast.makeText(UserLogin.this, "login error", Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(UserLogin.this, "login successfully ", Toast.LENGTH_SHORT).show();

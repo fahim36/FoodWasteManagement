@@ -99,7 +99,7 @@ public class NGOLoginActivity extends AppCompatActivity
             public void onResponse(String response) {
                 progressDialog.dismiss();
                 UserLoginModel object = new Gson().fromJson(response, UserLoginModel.class);
-                if(object.getError().equalsIgnoreCase("error"))
+                if(object.getError().equalsIgnoreCase("true"))
                 {
                     // error occured
                     Toast.makeText(NGOLoginActivity.this,"invalid username or password",Toast.LENGTH_SHORT).show();

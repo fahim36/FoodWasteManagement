@@ -1,10 +1,13 @@
 package com.example.foodwastemanagement;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -18,6 +21,7 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -31,7 +35,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -54,6 +61,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -65,11 +73,16 @@ public class NGODashboardActivity extends AppCompatActivity
     MyAdapter adapter;
     private Paint p = new Paint();
     private String url = Constants.URL_string+"admin_request_handler.php";
+    private String url2 = Constants.URL_string+"user_request_handler.php";
     private static final String TAG = "PushNotification";
     private static final String CHANNEL_ID = "101";
     View viewforsnackbar;
     SessionHelper sessionHelper;
     ArrayList<ListItemModel> rlist;
+    JSONArray cancelledist;
+    private Button acceptbtn , rejectbtn ,cancelbtn;
+    private TextView itemlistTv,itemdetailsTv,noDataTv;
+    private ImageView locationIv,callIv;
 
 
     @Override
@@ -85,6 +98,7 @@ public class NGODashboardActivity extends AppCompatActivity
         recyclerView.setLayoutManager(layoutManager);
         getAndLoadData();
         viewforsnackbar = findViewById(android.R.id.content);
+        noDataTv = findViewById(R.id.noDataTv);
 
         sessionHelper=new SessionHelper(this);
 
@@ -104,38 +118,42 @@ public class NGODashboardActivity extends AppCompatActivity
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEvent(RemoteMessage remoteMessage) {
        //todo
-        if(!sessionHelper.getUserType().equalsIgnoreCase("ngo"))
-            return;
+        getAndLoadData();
+        if(sessionHelper.getUserType().equalsIgnoreCase("ngo")) {
 
-        showNotification(remoteMessage.getNotification().getTitle(),remoteMessage.getNotification().getBody());
-        NGOPushModel model = new Gson().fromJson(remoteMessage.getData().get("data"),NGOPushModel.class);
+            showNotification(remoteMessage.getNotification().getTitle(), remoteMessage.getNotification().getBody());
+            NGOPushModel model = new Gson().fromJson(remoteMessage.getData().get("data"), NGOPushModel.class);
 
-        DialogWithButtons dialog = new DialogWithButtons(this, new DialogWithButtons.OnDialogButtonClickListener() {
-            @Override
-            public void onPositiveClicked(@NonNull DialogWithButtons d) {
-                        d.dismiss();
+            DialogWithButtons dialog = new DialogWithButtons(this, new DialogWithButtons.OnDialogButtonClickListener() {
+                @Override
+                public void onPositiveClicked(@NonNull DialogWithButtons d) {
+                    ListItemModel listItemModel=new ListItemModel();
+                    listItemModel.setPickupid(model.getPickupid());
+                    acceptPickupRequest(listItemModel);
+                    d.dismiss();
 
-            }
+                }
 
-            @Override
-            public void onNegativeClicked(@NonNull DialogWithButtons d) {
-                ListItemModel listItemModel = new ListItemModel();
-                listItemModel.setPickupid(model.getPickupid());
-                rlist.add(listItemModel);
-                saveChangesOnServer();
-                d.dismiss();
-            }
+                @Override
+                public void onNegativeClicked(@NonNull DialogWithButtons d) {
+                    ListItemModel listItemModel = new ListItemModel();
+                    listItemModel.setPickupid(model.getPickupid());
+                    rlist.add(listItemModel);
+                    saveChangesOnServer();
+                    d.dismiss();
+                }
 
-            @Override
-            public void onNeutralClicked(@NonNull DialogWithButtons d) {
-                d.dismiss();
-            }
-        });
+                @Override
+                public void onNeutralClicked(@NonNull DialogWithButtons d) {
+                    d.dismiss();
+                }
+            });
 
-        dialog.show();
-        dialog.setTitle("Pickup Alert");
-        dialog.setSubtitle("You have a new pickup request in your area");
-        dialog.setCancelable(false);
+            dialog.show();
+            dialog.setTitle("Pickup Alert");
+            dialog.setSubtitle("You have a new pickup request in your area");
+            dialog.setCancelable(false);
+        }
     }
     private void showNotification(String title,String message){
 
@@ -288,30 +306,28 @@ public class NGODashboardActivity extends AppCompatActivity
                         else{
                             JSONArray jsonArray = object.getJSONArray("list");
                             list=new ArrayList<>();
-                            Toast.makeText(NGODashboardActivity.this,object.getString("message"),Toast.LENGTH_SHORT).show();
+                          //  Toast.makeText(NGODashboardActivity.this,object.getString("message"),Toast.LENGTH_SHORT).show();
                             for(int i = 0; i< jsonArray.length(); i++)
                             {
                                 ListItemModel item = gson.fromJson(jsonArray.get(i).toString(), ListItemModel.class);
-                                if(item.getPickupStatus()!=null){
-                                    if(!item.getPickupStatus().equalsIgnoreCase("Accepted"))
-                                        list.add(item);
+                                if(item.getPickupstatus()!=null){
+                                    if(!item.getPickupstatus().equalsIgnoreCase("Accepted"))
+                                        if(isValidReq(item)){
+                                            list.add(item);
+                                        }
                                 }else{
+                                    if(isValidReq(item))
                                         list.add(item);
                                 }
 
                             }
-                            adapter = new MyAdapter(list, NGODashboardActivity.this, (view, item, position) -> {
-                                ListItemModel listItemModel = (ListItemModel) item;
-                                acceptPickupRequest(listItemModel);
 
-                            });
-                            recyclerView.setAdapter(adapter);
-                            adapter.notifyDataSetChanged();
-
-                            createNotificationChannel();
-
-
-                            initSwipe();
+                            if(list.size()==0)
+                                noDataTv.setVisibility(View.VISIBLE);
+                            else {
+                                noDataTv.setVisibility(View.GONE);
+                                getCancelledPickupReq();
+                            }
                         }
 
                     }
@@ -321,6 +337,8 @@ public class NGODashboardActivity extends AppCompatActivity
                 }
 
             }
+
+
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -341,7 +359,17 @@ public class NGODashboardActivity extends AppCompatActivity
         queue.add(request);
     }
 
+    private boolean isValidReq(ListItemModel item) {
+        Calendar calendar=Calendar.getInstance();
+        double pickupTime= Utils.dateStringToEpoch(item.getTimestamp(),"yyyy-MM-dd hh:mm:ss") + 14400000;   //4 Hour in ms is 14,400,000
+        double currentTime= calendar.getTimeInMillis();
 
+        if(currentTime>pickupTime)
+            return false;
+        else
+            return true;
+
+    }
 
     private void initSwipe()
     {
@@ -527,6 +555,154 @@ public class NGODashboardActivity extends AppCompatActivity
             }
         };
         queue.add(request);
+    }
+
+    private void getCancelledPickupReq()
+    {
+
+        //sending request and getting response using volley
+        RequestQueue queue = Volley.newRequestQueue(this);
+        StringRequest request = new StringRequest(Request.Method.POST, url2, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                try {
+                    JSONObject object = new JSONObject(response);
+                    if(!object.getBoolean("error"))
+                    {
+                        cancelledist = object.getJSONArray("data");
+                        filterData();
+
+                        if(list.size()==0)
+                            noDataTv.setVisibility(View.VISIBLE);
+                        else
+                            noDataTv.setVisibility(View.GONE);
+
+                        adapter = new MyAdapter(list, NGODashboardActivity.this, (view, item, position) -> {
+                            ListItemModel listItemModel = (ListItemModel) item;
+                            final Dialog dialog = new Dialog(NGODashboardActivity.this);
+                            dialog.setContentView(R.layout.pickup_details);
+                            acceptbtn = dialog.findViewById(R.id.btnPositive);
+                            rejectbtn = dialog.findViewById(R.id.btnNegative);
+                            cancelbtn = dialog.findViewById(R.id.btnNeutral);
+                            locationIv = dialog.findViewById(R.id.rview_iv_location);
+                            callIv = dialog.findViewById(R.id.rview_iv_call);
+                            itemdetailsTv = dialog.findViewById(R.id.pickuplocationTv);
+                            itemlistTv = dialog.findViewById(R.id.pickupdetailsTv);
+
+
+                            itemlistTv.setText("Items: "+listItemModel.getFooddesc());
+
+                            itemdetailsTv.setText("Details: "+listItemModel.getItemdetails());
+                            if(listItemModel.getItemdetails().isEmpty())
+                                itemdetailsTv.setText("");
+
+                            acceptbtn.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    dialog.dismiss();
+                                    acceptPickupRequest(listItemModel);
+                                }
+                            });
+                            rejectbtn.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    rlist.add(listItemModel);
+                                    dialog.dismiss();
+                                    saveChangesOnServer();
+                                }
+                            });
+
+                            cancelbtn.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    dialog.dismiss();
+                                }
+                            });
+
+                            callIv.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    AlertDialog alertDialog = new AlertDialog.Builder(NGODashboardActivity.this)
+                                            .setCancelable(false)
+                                            .setMessage("do you want to call " + list.get(position).getName() + " ?")
+                                            .setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                                                @SuppressLint("MissingPermission")
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    String phoneNo = list.get(position).getPhoneno();
+                                                    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + phoneNo));
+                                                    startActivity(intent);
+                                                }
+                                            })
+                                            .setNegativeButton("no", null)
+                                            .create();
+                                    alertDialog.show();
+                                }
+                            });
+
+                            locationIv.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    String mapurl;
+
+                                    String lat = list.get(position).getLatitude();
+                                    String lon = list.get(position).getLongitude();
+
+                                    mapurl = "https://www.google.com/maps/search/?api=1&query=" + lat + "," + lon;
+
+                                    Intent maps = new Intent(Intent.ACTION_VIEW, Uri.parse(mapurl));
+                                    startActivity(maps);
+                                }
+                            });
+                            dialog.show();
+                        });
+                        recyclerView.setAdapter(adapter);
+                        adapter.notifyDataSetChanged();
+
+                        createNotificationChannel();
+
+
+                        initSwipe();
+                    }
+                    else {
+                        Toast.makeText(NGODashboardActivity.this, "some error has occured", Toast.LENGTH_SHORT).show();
+
+                        Log.d("response", object.getString("message"));
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(NGODashboardActivity.this,error.getMessage(),Toast.LENGTH_SHORT).show();
+            }
+        })
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params = new HashMap<>();
+                params.put("request_type","getcancelled");
+                params.put("ngoid",sessionHelper.getUserId());
+                return params;
+            }
+        };
+        queue.add(request);
+    }
+
+    private void filterData() throws JSONException {
+       ArrayList<ListItemModel> templist= new ArrayList<>(list);
+        for (ListItemModel model:templist
+             ) {
+            for(int i=0;i<cancelledist.length();i++){
+                if(model.getPickupid().equalsIgnoreCase(cancelledist.get(i).toString())){
+                    list.remove(model);
+                    break;
+                }
+            }
+        }
     }
 
 }

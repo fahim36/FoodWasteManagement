@@ -59,6 +59,7 @@
                     android:id="@+id/rview_tv_accept"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:visibility="gone"
                     android:layout_marginRight="15dp"
                     android:background="@drawable/accept_button_bg"
                     android:text="" />

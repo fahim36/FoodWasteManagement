@@ -10,9 +10,10 @@
         <entry key="..\:/Project/Git/Food Waste Management/app/src/main/res/drawable/rounded_white.xml" value="0.20677083333333332" />
         <entry key="..\:/Project/Git/Food Waste Management/app/src/main/res/drawable/submit_btn.xml" value="0.3828125" />
         <entry key="..\:/Project/Git/Food Waste Management/app/src/main/res/font/bubblegum_sans.xml" value="0.396875" />
-        <entry key="..\:/Project/Git/Food Waste Management/app/src/main/res/layout/activity_admin_dashboard.xml" value="0.1984375" />
+        <entry key="..\:/Project/Git/Food Waste Management/app/src/main/res/layout/activity_admin_dashboard.xml" value="0.1542056074766355" />
         <entry key="..\:/Project/Git/Food Waste Management/app/src/main/res/layout/activity_admin_login.xml" value="0.33" />
         <entry key="..\:/Project/Git/Food Waste Management/app/src/main/res/layout/activity_maps.xml" value="0.36666666666666664" />
+        <entry key="..\:/Project/Git/Food Waste Management/app/src/main/res/layout/activity_ngoaccepted_pickup_request_list.xml" value="0.36666666666666664" />
         <entry key="..\:/Project/Git/Food Waste Management/app/src/main/res/layout/activity_pickup_location.xml" value="0.36666666666666664" />
         <entry key="..\:/Project/Git/Food Waste Management/app/src/main/res/layout/activity_register_user.xml" value="0.23854166666666668" />
         <entry key="..\:/Project/Git/Food Waste Management/app/src/main/res/layout/activity_user_dashboard.xml" value="0.36666666666666664" />
@@ -20,6 +21,7 @@
         <entry key="..\:/Project/Git/Food Waste Management/app/src/main/res/layout/bubblegum_sans.xml" value="0.36666666666666664" />
         <entry key="..\:/Project/Git/Food Waste Management/app/src/main/res/layout/custom_row.xml" value="0.36666666666666664" />
         <entry key="..\:/Project/Git/Food Waste Management/app/src/main/res/layout/dialog_with_button.xml" value="0.36666666666666664" />
+        <entry key="..\:/Project/Git/Food Waste Management/app/src/main/res/layout/pickup_details.xml" value="0.25" />
         <entry key="..\:/Project/Git/Food Waste Management/app/src/main/res/menu/list_menu.xml" value="0.1" />
       </map>
     </option>

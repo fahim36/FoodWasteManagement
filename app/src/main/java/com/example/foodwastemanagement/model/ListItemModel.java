@@ -1,46 +1,46 @@
 package com.example.foodwastemanagement.model;
 
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class ListItemModel {
 
-    private String itemDetails;
-    private String longitude;
-    private String latitude;
+    @SerializedName("name")
+    @Expose
     private String name;
-    private String fooddesc;
-    private String pickupid;
+    @SerializedName("phoneno")
+    @Expose
     private String phoneno;
-    private String pickupstatus;
+    @SerializedName("pickupid")
+    @Expose
+    private String pickupid;
+    @SerializedName("fooddesc")
+    @Expose
+    private String fooddesc;
+    @SerializedName("itemdetails")
+    @Expose
+    private String itemdetails;
+    @SerializedName("longitude")
+    @Expose
+    private String longitude;
+    @SerializedName("latitude")
+    @Expose
+    private String latitude;
+    @SerializedName("timestamp")
+    @Expose
     private String timestamp;
+    @SerializedName("pickupstatus")
+    @Expose
+    private String pickupstatus;
 
-    public String getPickupStatus() {
-        return pickupstatus;
+    public String getName() {
+        return name;
     }
 
-    public void setPickupStatus(String pickupStatus) {
-        this.pickupstatus = pickupStatus;
+    public void setName(String name) {
+        this.name = name;
     }
-
-
-    public String getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(String timestamp) {
-        this.timestamp = timestamp;
-    }
-
-
-
-    public String getPickupid() {
-        return pickupid;
-    }
-
-    public void setPickupid(String pickupid) {
-        this.pickupid = pickupid;
-    }
-
-
 
     public String getPhoneno() {
         return phoneno;
@@ -50,14 +50,28 @@ public class ListItemModel {
         this.phoneno = phoneno;
     }
 
-
-
-    public String getLocationtext() {
-        return itemDetails;
+    public String getPickupid() {
+        return pickupid;
     }
 
-    public void setLocationtext(String locationtext) {
-        this.itemDetails = locationtext;
+    public void setPickupid(String pickupid) {
+        this.pickupid = pickupid;
+    }
+
+    public String getFooddesc() {
+        return fooddesc;
+    }
+
+    public void setFooddesc(String fooddesc) {
+        this.fooddesc = fooddesc;
+    }
+
+    public String getItemdetails() {
+        return itemdetails;
+    }
+
+    public void setItemdetails(String itemdetails) {
+        this.itemdetails = itemdetails;
     }
 
     public String getLongitude() {
@@ -76,19 +90,19 @@ public class ListItemModel {
         this.latitude = latitude;
     }
 
-    public String getName() {
-        return name;
+    public String getTimestamp() {
+        return timestamp;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
     }
 
-    public String getFooddesc() {
-        return fooddesc;
+    public String getPickupstatus() {
+        return pickupstatus;
     }
 
-    public void setFooddesc(String fooddesc) {
-        this.fooddesc = fooddesc;
+    public void setPickupstatus(String pickupstatus) {
+        this.pickupstatus = pickupstatus;
     }
 }

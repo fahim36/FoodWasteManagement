@@ -58,17 +58,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.imgview_location.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String mapurl;
-                if (list.get(position).getLocationtext() == null) {
+                     String mapurl;
                     String lat = list.get(position).getLatitude();
                     String lon = list.get(position).getLongitude();
 
                     mapurl = "https://www.google.com/maps/search/?api=1&query=" + lat + "," + lon;
 
-                } else {
-                    mapurl = "https://www.google.com/maps/search/?api=1&query=" + list.get(position).getLocationtext();
-                }
                 Intent maps = new Intent(Intent.ACTION_VIEW, Uri.parse(mapurl));
+                maps.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 context.getApplicationContext().startActivity(maps);
             }
         });
@@ -111,18 +108,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             }
         });
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog dialog = new AlertDialog.Builder(context)
-                        .setMessage(list.get(position).getName()+"\n"+
-                                    list.get(position).getFooddesc())
-                        .setPositiveButton("ok",null)
-                        .create();
-                dialog.show();
-            }
-        });
-        holder.rview_tv_accept.setOnClickListener(v -> listener.onItemClick(
+        holder.itemView.setOnClickListener(v -> listener.onItemClick(
                 v, list.get(position), position));
 
     }

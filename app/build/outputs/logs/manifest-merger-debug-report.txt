@@ -1,14 +1,14 @@
 -- Merging decision tree log ---
 manifest
-ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:2:1-57:12
-INJECTED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:2:1-57:12
-INJECTED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:2:1-57:12
-INJECTED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:2:1-57:12
+ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:2:1-51:12
+INJECTED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:2:1-51:12
+INJECTED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:2:1-51:12
+INJECTED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:2:1-51:12
 MERGED from [com.google.android.material:material:1.4.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\c7b9198339a6effad042f18f38268af9\material-1.4.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\ead9caf6ccf98374ed8e9cd41bb23db7\constraintlayout-2.1.1\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat:1.3.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\a9a8bb27e87530268da6725bfa2e00b1\appcompat-1.3.1\AndroidManifest.xml:17:1-24:12
-MERGED from [com.google.firebase:firebase-messaging:22.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\005f121e8b6173b364678a1394eef551\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:17:1-58:12
-MERGED from [com.google.android.gms:play-services-maps:17.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\dedda08c510bd4f81a4a1893e86b0a40\jetified-play-services-maps-17.0.1\AndroidManifest.xml:17:1-44:12
+MERGED from [com.google.firebase:firebase-messaging:23.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\1335c43442fa3080fa8883cb8a7334ee\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:17:1-58:12
+MERGED from [com.google.android.gms:play-services-maps:18.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\74f6bd3c78e683b164571e3e07568bc5\jetified-play-services-maps-18.0.0\AndroidManifest.xml:17:1-44:12
 MERGED from [com.android.volley:volley:1.2.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\82ce73991f6704a158e7541229d78044\jetified-volley-1.2.1\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\08769347b95a4d49330654c651871f96\cardview-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-analytics:19.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\ddb25370f6993437790099811df1fc23\jetified-firebase-analytics-19.0.1\AndroidManifest.xml:2:1-9:12
@@ -20,7 +20,7 @@ MERGED from [com.google.android.gms:play-services-measurement-api:19.0.1] C:\Use
 MERGED from [com.google.firebase:firebase-installations:17.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\e68120f1bf6fae55794075e57e0e8180\jetified-firebase-installations-17.0.0\AndroidManifest.xml:2:1-24:12
 MERGED from [com.google.firebase:firebase-common:20.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\990afd40502840e2f0df888521f57e58\jetified-firebase-common-20.0.0\AndroidManifest.xml:15:1-40:12
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\a2efa4ccf369d7348a8f0755b168f395\jetified-viewpager2-1.0.0\AndroidManifest.xml:17:1-24:12
-MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\8e949b430f7f60e558e9b8060d48d344\jetified-play-services-cloud-messaging-16.0.0\AndroidManifest.xml:2:1-13:12
+MERGED from [com.google.android.gms:play-services-cloud-messaging:17.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\2dd9aa1b1682780311811b4275f77b5b\jetified-play-services-cloud-messaging-17.0.0\AndroidManifest.xml:2:1-13:12
 MERGED from [com.google.android.gms:play-services-measurement:19.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\8e9a70fd728157ffc4e9e059f37527b3\jetified-play-services-measurement-19.0.1\AndroidManifest.xml:17:1-46:12
 MERGED from [com.google.android.gms:play-services-measurement-sdk:19.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\bfb0da5da6fd2bbd5993805b31da6067\jetified-play-services-measurement-sdk-19.0.1\AndroidManifest.xml:17:1-25:12
 MERGED from [com.google.android.gms:play-services-measurement-impl:19.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\38a4d1a90c5a41a07eabf17a4c434d10\jetified-play-services-measurement-impl-19.0.1\AndroidManifest.xml:17:1-31:12
@@ -67,31 +67,31 @@ MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\Knightmare\.grad
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\46a6ca833fd11a72febdb783a84d1482\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\d37c5257474d5ea8fe10063dd4898a22\print-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\fb84b3d81551d99abba7f0476a39aaa7\jetified-annotation-experimental-1.0.0\AndroidManifest.xml:17:1-24:12
-INJECTED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:2:1-57:12
-INJECTED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:2:1-57:12
-INJECTED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:2:1-57:12
+INJECTED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:2:1-51:12
+INJECTED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:2:1-51:12
+INJECTED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:2:1-51:12
 	package
 		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:3:5-46
 		INJECTED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml
 		INJECTED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml
-		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:2:1-57:12
+		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:2:1-51:12
 		INJECTED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml
-		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:2:1-57:12
+		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:2:1-51:12
 		INJECTED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:2:11-69
 uses-permission#android.permission.ACCESS_FINE_LOCATION
-ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:4:5-79
+ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:5:5-79
 	android:name
-		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:4:22-76
+		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:5:22-76
 uses-permission#android.permission.INTERNET
-ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:5:5-67
-MERGED from [com.google.android.gms:play-services-maps:17.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\dedda08c510bd4f81a4a1893e86b0a40\jetified-play-services-maps-17.0.1\AndroidManifest.xml:24:5-67
-MERGED from [com.google.android.gms:play-services-maps:17.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\dedda08c510bd4f81a4a1893e86b0a40\jetified-play-services-maps-17.0.1\AndroidManifest.xml:24:5-67
+ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:6:5-67
+MERGED from [com.google.android.gms:play-services-maps:18.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\74f6bd3c78e683b164571e3e07568bc5\jetified-play-services-maps-18.0.0\AndroidManifest.xml:24:5-67
+MERGED from [com.google.android.gms:play-services-maps:18.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\74f6bd3c78e683b164571e3e07568bc5\jetified-play-services-maps-18.0.0\AndroidManifest.xml:24:5-67
 MERGED from [com.google.firebase:firebase-crashlytics:18.2.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\7e33bdb762e45369304835b935098624\jetified-firebase-crashlytics-18.2.1\AndroidManifest.xml:10:5-67
 MERGED from [com.google.firebase:firebase-crashlytics:18.2.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\7e33bdb762e45369304835b935098624\jetified-firebase-crashlytics-18.2.1\AndroidManifest.xml:10:5-67
 MERGED from [com.google.android.datatransport:transport-backend-cct:3.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\d166ea9c6184f112e148434a5d5c4337\jetified-transport-backend-cct-3.0.0\AndroidManifest.xml:26:5-67
@@ -100,8 +100,8 @@ MERGED from [com.google.android.gms:play-services-measurement-api:19.0.1] C:\Use
 MERGED from [com.google.android.gms:play-services-measurement-api:19.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\84973c64037a335edcaebb51337bf4e4\jetified-play-services-measurement-api-19.0.1\AndroidManifest.xml:22:5-67
 MERGED from [com.google.firebase:firebase-installations:17.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\e68120f1bf6fae55794075e57e0e8180\jetified-firebase-installations-17.0.0\AndroidManifest.xml:11:5-67
 MERGED from [com.google.firebase:firebase-installations:17.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\e68120f1bf6fae55794075e57e0e8180\jetified-firebase-installations-17.0.0\AndroidManifest.xml:11:5-67
-MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\8e949b430f7f60e558e9b8060d48d344\jetified-play-services-cloud-messaging-16.0.0\AndroidManifest.xml:8:5-67
-MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\8e949b430f7f60e558e9b8060d48d344\jetified-play-services-cloud-messaging-16.0.0\AndroidManifest.xml:8:5-67
+MERGED from [com.google.android.gms:play-services-cloud-messaging:17.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\2dd9aa1b1682780311811b4275f77b5b\jetified-play-services-cloud-messaging-17.0.0\AndroidManifest.xml:8:5-67
+MERGED from [com.google.android.gms:play-services-cloud-messaging:17.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\2dd9aa1b1682780311811b4275f77b5b\jetified-play-services-cloud-messaging-17.0.0\AndroidManifest.xml:8:5-67
 MERGED from [com.google.android.gms:play-services-measurement:19.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\8e9a70fd728157ffc4e9e059f37527b3\jetified-play-services-measurement-19.0.1\AndroidManifest.xml:23:5-67
 MERGED from [com.google.android.gms:play-services-measurement:19.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\8e9a70fd728157ffc4e9e059f37527b3\jetified-play-services-measurement-19.0.1\AndroidManifest.xml:23:5-67
 MERGED from [com.google.android.gms:play-services-measurement-impl:19.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\38a4d1a90c5a41a07eabf17a4c434d10\jetified-play-services-measurement-impl-19.0.1\AndroidManifest.xml:23:5-67
@@ -109,25 +109,25 @@ MERGED from [com.google.android.gms:play-services-measurement-impl:19.0.1] C:\Us
 MERGED from [com.google.android.gms:play-services-measurement-sdk-api:19.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\38ccda982c9fdf249e99b3f00f7c633f\jetified-play-services-measurement-sdk-api-19.0.1\AndroidManifest.xml:23:5-67
 MERGED from [com.google.android.gms:play-services-measurement-sdk-api:19.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\38ccda982c9fdf249e99b3f00f7c633f\jetified-play-services-measurement-sdk-api-19.0.1\AndroidManifest.xml:23:5-67
 	android:name
-		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:5:22-64
+		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:6:22-64
 uses-permission#android.permission.CALL_PHONE
-ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:6:5-68
+ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:7:5-69
 	android:name
-		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:6:22-66
+		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:7:22-66
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:7:5-81
+ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:8:5-81
 	android:name
-		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:7:22-78
+		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:8:22-78
 application
-ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:12:5-53:19
+ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:10:5-49:19
 MERGED from [com.google.android.material:material:1.4.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\c7b9198339a6effad042f18f38268af9\material-1.4.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.4.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\c7b9198339a6effad042f18f38268af9\material-1.4.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\ead9caf6ccf98374ed8e9cd41bb23db7\constraintlayout-2.1.1\AndroidManifest.xml:9:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\ead9caf6ccf98374ed8e9cd41bb23db7\constraintlayout-2.1.1\AndroidManifest.xml:9:5-20
-MERGED from [com.google.firebase:firebase-messaging:22.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\005f121e8b6173b364678a1394eef551\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:27:5-56:19
-MERGED from [com.google.firebase:firebase-messaging:22.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\005f121e8b6173b364678a1394eef551\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:27:5-56:19
-MERGED from [com.google.android.gms:play-services-maps:17.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\dedda08c510bd4f81a4a1893e86b0a40\jetified-play-services-maps-17.0.1\AndroidManifest.xml:36:5-42:19
-MERGED from [com.google.android.gms:play-services-maps:17.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\dedda08c510bd4f81a4a1893e86b0a40\jetified-play-services-maps-17.0.1\AndroidManifest.xml:36:5-42:19
+MERGED from [com.google.firebase:firebase-messaging:23.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\1335c43442fa3080fa8883cb8a7334ee\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:27:5-56:19
+MERGED from [com.google.firebase:firebase-messaging:23.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\1335c43442fa3080fa8883cb8a7334ee\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:27:5-56:19
+MERGED from [com.google.android.gms:play-services-maps:18.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\74f6bd3c78e683b164571e3e07568bc5\jetified-play-services-maps-18.0.0\AndroidManifest.xml:36:5-42:19
+MERGED from [com.google.android.gms:play-services-maps:18.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\74f6bd3c78e683b164571e3e07568bc5\jetified-play-services-maps-18.0.0\AndroidManifest.xml:36:5-42:19
 MERGED from [com.google.firebase:firebase-analytics:19.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\ddb25370f6993437790099811df1fc23\jetified-firebase-analytics-19.0.1\AndroidManifest.xml:7:5-20
 MERGED from [com.google.firebase:firebase-analytics:19.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\ddb25370f6993437790099811df1fc23\jetified-firebase-analytics-19.0.1\AndroidManifest.xml:7:5-20
 MERGED from [com.google.firebase:firebase-crashlytics:18.2.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\7e33bdb762e45369304835b935098624\jetified-firebase-crashlytics-18.2.1\AndroidManifest.xml:14:5-22:19
@@ -173,81 +173,87 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\Kn
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.5.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\128caa5838f68ca87736c1b563456da5\core-1.5.0\AndroidManifest.xml:24:18-86
 	android:supportsRtl
-		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:18:9-35
+		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:16:9-35
 	android:label
-		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:16:9-41
-	android:fullBackupContent
 		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:14:9-41
+	android:fullBackupContent
+		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:12:9-41
 	android:roundIcon
-		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:17:9-54
+		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:15:9-54
 	android:icon
-		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:15:9-43
+		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:13:9-43
 	android:allowBackup
-		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:13:9-35
+		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:11:9-35
 	android:theme
-		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:20:9-52
+		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:17:9-52
 	android:usesCleartextTraffic
-		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:19:9-44
+		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:18:9-44
+activity#com.example.foodwastemanagement.NGOAcceptedPickupRequestList
+ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:19:9-21:40
+	android:exported
+		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:21:13-37
+	android:name
+		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:20:13-57
 activity#com.example.foodwastemanagement.UserLogin
-ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:21:9-27:20
+ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:22:9-28:20
 	android:name
-		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:21:19-75
+		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:22:19-44
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:22:13-26:29
+ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:23:13-27:29
 action#android.intent.action.MAIN
-ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:23:17-69
+ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:24:17-69
 	android:name
-		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:23:25-66
+		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:24:25-66
 category#android.intent.category.LAUNCHER
-ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:25:17-77
+ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:26:17-77
 	android:name
-		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:25:27-74
+		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:26:27-74
 activity#com.example.foodwastemanagement.NGODashboardActivity
-ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:28:9-89
+ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:29:9-58
 	android:name
-		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:28:19-86
+		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:29:19-55
 activity#com.example.foodwastemanagement.MapsActivity
-ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:29:9-81
+ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:30:9-50
 	android:name
-		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:29:19-78
+		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:30:19-47
 activity#com.example.foodwastemanagement.PickupLocationActivity
-ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:30:9-91
+ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:31:9-60
 	android:name
-		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:30:19-88
+		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:31:19-57
 activity#com.example.foodwastemanagement.NGOLoginActivity
-ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:31:9-85
+ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:32:9-54
 	android:name
-		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:31:19-82
+		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:32:19-51
 activity#com.example.foodwastemanagement.RegisterUser
-ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:32:9-81
+ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:33:9-50
 	android:name
-		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:32:19-78
+		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:33:19-47
 activity#com.example.foodwastemanagement.UserDashboardActivity
-ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:33:9-90
+ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:34:9-59
 	android:name
-		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:33:19-87
+		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:34:19-56
 meta-data#com.google.android.geo.API_KEY
-ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:35:9-37:55
+ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:36:9-38:55
 	android:value
-		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:37:13-52
+		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:38:13-52
 	android:name
-		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:36:13-58
+		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:37:13-58
 meta-data#preloaded_fonts
-ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:38:9-40:57
+ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:39:9-41:57
 	android:resource
-		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:40:13-54
+		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:41:13-54
 	android:name
-		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:39:13-43
+		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:40:13-43
 service#com.example.foodwastemanagement.MyFirebaseServices
-ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:46:9-51:19
+ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:44:9-48:19
 	android:name
-		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:47:13-46
+		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:44:18-52
 intent-filter#action:name:com.google.firebase.MESSAGING_EVENT
-ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:48:13-50:29
+ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:45:13-47:29
 action#com.google.firebase.MESSAGING_EVENT
-ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:49:17-77
+ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:46:17-78
 	android:name
-		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:49:25-75
+		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml:46:25-75
 uses-sdk
 INJECTED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml
@@ -258,10 +264,10 @@ MERGED from [androidx.constraintlayout:constraintlayout:2.1.1] C:\Users\Knightma
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\ead9caf6ccf98374ed8e9cd41bb23db7\constraintlayout-2.1.1\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.appcompat:appcompat:1.3.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\a9a8bb27e87530268da6725bfa2e00b1\appcompat-1.3.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.appcompat:appcompat:1.3.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\a9a8bb27e87530268da6725bfa2e00b1\appcompat-1.3.1\AndroidManifest.xml:20:5-22:41
-MERGED from [com.google.firebase:firebase-messaging:22.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\005f121e8b6173b364678a1394eef551\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:firebase-messaging:22.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\005f121e8b6173b364678a1394eef551\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-maps:17.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\dedda08c510bd4f81a4a1893e86b0a40\jetified-play-services-maps-17.0.1\AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-maps:17.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\dedda08c510bd4f81a4a1893e86b0a40\jetified-play-services-maps-17.0.1\AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-messaging:23.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\1335c43442fa3080fa8883cb8a7334ee\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-messaging:23.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\1335c43442fa3080fa8883cb8a7334ee\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-maps:18.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\74f6bd3c78e683b164571e3e07568bc5\jetified-play-services-maps-18.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-maps:18.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\74f6bd3c78e683b164571e3e07568bc5\jetified-play-services-maps-18.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.android.volley:volley:1.2.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\82ce73991f6704a158e7541229d78044\jetified-volley-1.2.1\AndroidManifest.xml:5:5-43
 MERGED from [com.android.volley:volley:1.2.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\82ce73991f6704a158e7541229d78044\jetified-volley-1.2.1\AndroidManifest.xml:5:5-43
 MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\08769347b95a4d49330654c651871f96\cardview-1.0.0\AndroidManifest.xml:20:5-44
@@ -284,8 +290,8 @@ MERGED from [com.google.firebase:firebase-common:20.0.0] C:\Users\Knightmare\.gr
 MERGED from [com.google.firebase:firebase-common:20.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\990afd40502840e2f0df888521f57e58\jetified-firebase-common-20.0.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\a2efa4ccf369d7348a8f0755b168f395\jetified-viewpager2-1.0.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\a2efa4ccf369d7348a8f0755b168f395\jetified-viewpager2-1.0.0\AndroidManifest.xml:20:5-22:41
-MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\8e949b430f7f60e558e9b8060d48d344\jetified-play-services-cloud-messaging-16.0.0\AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\8e949b430f7f60e558e9b8060d48d344\jetified-play-services-cloud-messaging-16.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-cloud-messaging:17.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\2dd9aa1b1682780311811b4275f77b5b\jetified-play-services-cloud-messaging-17.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-cloud-messaging:17.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\2dd9aa1b1682780311811b4275f77b5b\jetified-play-services-cloud-messaging-17.0.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-measurement:19.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\8e9a70fd728157ffc4e9e059f37527b3\jetified-play-services-measurement-19.0.1\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-measurement:19.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\8e9a70fd728157ffc4e9e059f37527b3\jetified-play-services-measurement-19.0.1\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-measurement-sdk:19.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\bfb0da5da6fd2bbd5993805b31da6067\jetified-play-services-measurement-sdk-19.0.1\AndroidManifest.xml:20:5-44
@@ -389,17 +395,17 @@ INJECTED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.
 		ADDED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml
 		INJECTED from H:\Project\Git\Food Waste Management\app\src\main\AndroidManifest.xml
 uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from [com.google.firebase:firebase-messaging:22.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\005f121e8b6173b364678a1394eef551\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:22:5-79
-MERGED from [com.google.android.gms:play-services-maps:17.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\dedda08c510bd4f81a4a1893e86b0a40\jetified-play-services-maps-17.0.1\AndroidManifest.xml:23:5-79
-MERGED from [com.google.android.gms:play-services-maps:17.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\dedda08c510bd4f81a4a1893e86b0a40\jetified-play-services-maps-17.0.1\AndroidManifest.xml:23:5-79
+ADDED from [com.google.firebase:firebase-messaging:23.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\1335c43442fa3080fa8883cb8a7334ee\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:22:5-79
+MERGED from [com.google.android.gms:play-services-maps:18.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\74f6bd3c78e683b164571e3e07568bc5\jetified-play-services-maps-18.0.0\AndroidManifest.xml:23:5-79
+MERGED from [com.google.android.gms:play-services-maps:18.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\74f6bd3c78e683b164571e3e07568bc5\jetified-play-services-maps-18.0.0\AndroidManifest.xml:23:5-79
 MERGED from [com.google.android.datatransport:transport-backend-cct:3.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\d166ea9c6184f112e148434a5d5c4337\jetified-transport-backend-cct-3.0.0\AndroidManifest.xml:25:5-79
 MERGED from [com.google.android.datatransport:transport-backend-cct:3.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\d166ea9c6184f112e148434a5d5c4337\jetified-transport-backend-cct-3.0.0\AndroidManifest.xml:25:5-79
 MERGED from [com.google.android.gms:play-services-measurement-api:19.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\84973c64037a335edcaebb51337bf4e4\jetified-play-services-measurement-api-19.0.1\AndroidManifest.xml:23:5-79
 MERGED from [com.google.android.gms:play-services-measurement-api:19.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\84973c64037a335edcaebb51337bf4e4\jetified-play-services-measurement-api-19.0.1\AndroidManifest.xml:23:5-79
 MERGED from [com.google.firebase:firebase-installations:17.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\e68120f1bf6fae55794075e57e0e8180\jetified-firebase-installations-17.0.0\AndroidManifest.xml:10:5-79
 MERGED from [com.google.firebase:firebase-installations:17.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\e68120f1bf6fae55794075e57e0e8180\jetified-firebase-installations-17.0.0\AndroidManifest.xml:10:5-79
-MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\8e949b430f7f60e558e9b8060d48d344\jetified-play-services-cloud-messaging-16.0.0\AndroidManifest.xml:7:5-79
-MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\8e949b430f7f60e558e9b8060d48d344\jetified-play-services-cloud-messaging-16.0.0\AndroidManifest.xml:7:5-79
+MERGED from [com.google.android.gms:play-services-cloud-messaging:17.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\2dd9aa1b1682780311811b4275f77b5b\jetified-play-services-cloud-messaging-17.0.0\AndroidManifest.xml:7:5-79
+MERGED from [com.google.android.gms:play-services-cloud-messaging:17.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\2dd9aa1b1682780311811b4275f77b5b\jetified-play-services-cloud-messaging-17.0.0\AndroidManifest.xml:7:5-79
 MERGED from [com.google.android.gms:play-services-measurement:19.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\8e9a70fd728157ffc4e9e059f37527b3\jetified-play-services-measurement-19.0.1\AndroidManifest.xml:24:5-79
 MERGED from [com.google.android.gms:play-services-measurement:19.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\8e9a70fd728157ffc4e9e059f37527b3\jetified-play-services-measurement-19.0.1\AndroidManifest.xml:24:5-79
 MERGED from [com.google.android.gms:play-services-measurement-impl:19.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\38a4d1a90c5a41a07eabf17a4c434d10\jetified-play-services-measurement-impl-19.0.1\AndroidManifest.xml:24:5-79
@@ -409,13 +415,13 @@ MERGED from [com.google.android.gms:play-services-measurement-sdk-api:19.0.1] C:
 MERGED from [com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\f42c7bc1e6af322a6cef70c614c72a99\jetified-transport-runtime-3.0.0\AndroidManifest.xml:22:5-79
 MERGED from [com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\f42c7bc1e6af322a6cef70c614c72a99\jetified-transport-runtime-3.0.0\AndroidManifest.xml:22:5-79
 	android:name
-		ADDED from [com.google.firebase:firebase-messaging:22.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\005f121e8b6173b364678a1394eef551\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:22:22-76
+		ADDED from [com.google.firebase:firebase-messaging:23.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\1335c43442fa3080fa8883cb8a7334ee\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:22:22-76
 uses-permission#android.permission.WAKE_LOCK
-ADDED from [com.google.firebase:firebase-messaging:22.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\005f121e8b6173b364678a1394eef551\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:23:5-68
+ADDED from [com.google.firebase:firebase-messaging:23.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\1335c43442fa3080fa8883cb8a7334ee\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:23:5-68
 MERGED from [com.google.android.gms:play-services-measurement-api:19.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\84973c64037a335edcaebb51337bf4e4\jetified-play-services-measurement-api-19.0.1\AndroidManifest.xml:24:5-68
 MERGED from [com.google.android.gms:play-services-measurement-api:19.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\84973c64037a335edcaebb51337bf4e4\jetified-play-services-measurement-api-19.0.1\AndroidManifest.xml:24:5-68
-MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\8e949b430f7f60e558e9b8060d48d344\jetified-play-services-cloud-messaging-16.0.0\AndroidManifest.xml:9:5-68
-MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\8e949b430f7f60e558e9b8060d48d344\jetified-play-services-cloud-messaging-16.0.0\AndroidManifest.xml:9:5-68
+MERGED from [com.google.android.gms:play-services-cloud-messaging:17.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\2dd9aa1b1682780311811b4275f77b5b\jetified-play-services-cloud-messaging-17.0.0\AndroidManifest.xml:9:5-68
+MERGED from [com.google.android.gms:play-services-cloud-messaging:17.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\2dd9aa1b1682780311811b4275f77b5b\jetified-play-services-cloud-messaging-17.0.0\AndroidManifest.xml:9:5-68
 MERGED from [com.google.android.gms:play-services-measurement:19.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\8e9a70fd728157ffc4e9e059f37527b3\jetified-play-services-measurement-19.0.1\AndroidManifest.xml:25:5-68
 MERGED from [com.google.android.gms:play-services-measurement:19.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\8e9a70fd728157ffc4e9e059f37527b3\jetified-play-services-measurement-19.0.1\AndroidManifest.xml:25:5-68
 MERGED from [com.google.android.gms:play-services-measurement-impl:19.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\38a4d1a90c5a41a07eabf17a4c434d10\jetified-play-services-measurement-impl-19.0.1\AndroidManifest.xml:25:5-68
@@ -423,37 +429,37 @@ MERGED from [com.google.android.gms:play-services-measurement-impl:19.0.1] C:\Us
 MERGED from [com.google.android.gms:play-services-measurement-sdk-api:19.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\38ccda982c9fdf249e99b3f00f7c633f\jetified-play-services-measurement-sdk-api-19.0.1\AndroidManifest.xml:25:5-68
 MERGED from [com.google.android.gms:play-services-measurement-sdk-api:19.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\38ccda982c9fdf249e99b3f00f7c633f\jetified-play-services-measurement-sdk-api-19.0.1\AndroidManifest.xml:25:5-68
 	android:name
-		ADDED from [com.google.firebase:firebase-messaging:22.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\005f121e8b6173b364678a1394eef551\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:23:22-65
+		ADDED from [com.google.firebase:firebase-messaging:23.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\1335c43442fa3080fa8883cb8a7334ee\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:23:22-65
 uses-permission#com.google.android.c2dm.permission.RECEIVE
-ADDED from [com.google.firebase:firebase-messaging:22.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\005f121e8b6173b364678a1394eef551\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:25:5-82
-MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\8e949b430f7f60e558e9b8060d48d344\jetified-play-services-cloud-messaging-16.0.0\AndroidManifest.xml:11:5-82
-MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\8e949b430f7f60e558e9b8060d48d344\jetified-play-services-cloud-messaging-16.0.0\AndroidManifest.xml:11:5-82
+ADDED from [com.google.firebase:firebase-messaging:23.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\1335c43442fa3080fa8883cb8a7334ee\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:25:5-82
+MERGED from [com.google.android.gms:play-services-cloud-messaging:17.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\2dd9aa1b1682780311811b4275f77b5b\jetified-play-services-cloud-messaging-17.0.0\AndroidManifest.xml:11:5-82
+MERGED from [com.google.android.gms:play-services-cloud-messaging:17.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\2dd9aa1b1682780311811b4275f77b5b\jetified-play-services-cloud-messaging-17.0.0\AndroidManifest.xml:11:5-82
 	android:name
-		ADDED from [com.google.firebase:firebase-messaging:22.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\005f121e8b6173b364678a1394eef551\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:25:22-79
+		ADDED from [com.google.firebase:firebase-messaging:23.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\1335c43442fa3080fa8883cb8a7334ee\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:25:22-79
 receiver#com.google.firebase.iid.FirebaseInstanceIdReceiver
-ADDED from [com.google.firebase:firebase-messaging:22.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\005f121e8b6173b364678a1394eef551\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:28:9-35:20
+ADDED from [com.google.firebase:firebase-messaging:23.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\1335c43442fa3080fa8883cb8a7334ee\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:28:9-35:20
 	android:exported
-		ADDED from [com.google.firebase:firebase-messaging:22.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\005f121e8b6173b364678a1394eef551\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:30:13-36
+		ADDED from [com.google.firebase:firebase-messaging:23.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\1335c43442fa3080fa8883cb8a7334ee\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:30:13-36
 	android:permission
-		ADDED from [com.google.firebase:firebase-messaging:22.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\005f121e8b6173b364678a1394eef551\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:31:13-73
+		ADDED from [com.google.firebase:firebase-messaging:23.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\1335c43442fa3080fa8883cb8a7334ee\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:31:13-73
 	android:name
-		ADDED from [com.google.firebase:firebase-messaging:22.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\005f121e8b6173b364678a1394eef551\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:29:13-78
+		ADDED from [com.google.firebase:firebase-messaging:23.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\1335c43442fa3080fa8883cb8a7334ee\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:29:13-78
 intent-filter#action:name:com.google.android.c2dm.intent.RECEIVE
-ADDED from [com.google.firebase:firebase-messaging:22.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\005f121e8b6173b364678a1394eef551\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:32:13-34:29
+ADDED from [com.google.firebase:firebase-messaging:23.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\1335c43442fa3080fa8883cb8a7334ee\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:32:13-34:29
 action#com.google.android.c2dm.intent.RECEIVE
-ADDED from [com.google.firebase:firebase-messaging:22.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\005f121e8b6173b364678a1394eef551\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:33:17-81
+ADDED from [com.google.firebase:firebase-messaging:23.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\1335c43442fa3080fa8883cb8a7334ee\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:33:17-81
 	android:name
-		ADDED from [com.google.firebase:firebase-messaging:22.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\005f121e8b6173b364678a1394eef551\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:33:25-78
+		ADDED from [com.google.firebase:firebase-messaging:23.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\1335c43442fa3080fa8883cb8a7334ee\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:33:25-78
 service#com.google.firebase.messaging.FirebaseMessagingService
-ADDED from [com.google.firebase:firebase-messaging:22.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\005f121e8b6173b364678a1394eef551\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:41:9-48:19
+ADDED from [com.google.firebase:firebase-messaging:23.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\1335c43442fa3080fa8883cb8a7334ee\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:41:9-48:19
 	android:exported
-		ADDED from [com.google.firebase:firebase-messaging:22.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\005f121e8b6173b364678a1394eef551\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:44:13-37
+		ADDED from [com.google.firebase:firebase-messaging:23.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\1335c43442fa3080fa8883cb8a7334ee\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:44:13-37
 	android:directBootAware
-		ADDED from [com.google.firebase:firebase-messaging:22.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\005f121e8b6173b364678a1394eef551\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:43:13-43
+		ADDED from [com.google.firebase:firebase-messaging:23.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\1335c43442fa3080fa8883cb8a7334ee\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:43:13-43
 	android:name
-		ADDED from [com.google.firebase:firebase-messaging:22.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\005f121e8b6173b364678a1394eef551\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:42:13-82
+		ADDED from [com.google.firebase:firebase-messaging:23.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\1335c43442fa3080fa8883cb8a7334ee\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:42:13-82
 service#com.google.firebase.components.ComponentDiscoveryService
-ADDED from [com.google.firebase:firebase-messaging:22.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\005f121e8b6173b364678a1394eef551\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:49:9-55:19
+ADDED from [com.google.firebase:firebase-messaging:23.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\1335c43442fa3080fa8883cb8a7334ee\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:49:9-55:19
 MERGED from [com.google.firebase:firebase-crashlytics:18.2.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\7e33bdb762e45369304835b935098624\jetified-firebase-crashlytics-18.2.1\AndroidManifest.xml:15:9-21:19
 MERGED from [com.google.firebase:firebase-crashlytics:18.2.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\7e33bdb762e45369304835b935098624\jetified-firebase-crashlytics-18.2.1\AndroidManifest.xml:15:9-21:19
 MERGED from [com.google.firebase:firebase-datatransport:18.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\39e8d7809f0e1f4625247d9936bd196e\jetified-firebase-datatransport-18.0.0\AndroidManifest.xml:25:9-31:19
@@ -465,37 +471,37 @@ MERGED from [com.google.firebase:firebase-installations:17.0.0] C:\Users\Knightm
 MERGED from [com.google.firebase:firebase-common:20.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\990afd40502840e2f0df888521f57e58\jetified-firebase-common-20.0.0\AndroidManifest.xml:33:9-37:35
 MERGED from [com.google.firebase:firebase-common:20.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\990afd40502840e2f0df888521f57e58\jetified-firebase-common-20.0.0\AndroidManifest.xml:33:9-37:35
 	android:exported
-		ADDED from [com.google.firebase:firebase-messaging:22.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\005f121e8b6173b364678a1394eef551\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:51:13-37
+		ADDED from [com.google.firebase:firebase-messaging:23.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\1335c43442fa3080fa8883cb8a7334ee\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:51:13-37
 	tools:targetApi
 		ADDED from [com.google.firebase:firebase-common:20.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\990afd40502840e2f0df888521f57e58\jetified-firebase-common-20.0.0\AndroidManifest.xml:37:13-32
 	android:directBootAware
 		ADDED from [com.google.firebase:firebase-common:20.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\990afd40502840e2f0df888521f57e58\jetified-firebase-common-20.0.0\AndroidManifest.xml:35:13-43
 	android:name
-		ADDED from [com.google.firebase:firebase-messaging:22.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\005f121e8b6173b364678a1394eef551\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:50:13-84
+		ADDED from [com.google.firebase:firebase-messaging:23.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\1335c43442fa3080fa8883cb8a7334ee\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:50:13-84
 meta-data#com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar
-ADDED from [com.google.firebase:firebase-messaging:22.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\005f121e8b6173b364678a1394eef551\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:52:13-54:85
+ADDED from [com.google.firebase:firebase-messaging:23.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\1335c43442fa3080fa8883cb8a7334ee\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:52:13-54:85
 	android:value
-		ADDED from [com.google.firebase:firebase-messaging:22.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\005f121e8b6173b364678a1394eef551\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:54:17-82
+		ADDED from [com.google.firebase:firebase-messaging:23.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\1335c43442fa3080fa8883cb8a7334ee\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:54:17-82
 	android:name
-		ADDED from [com.google.firebase:firebase-messaging:22.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\005f121e8b6173b364678a1394eef551\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:53:17-119
+		ADDED from [com.google.firebase:firebase-messaging:23.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\1335c43442fa3080fa8883cb8a7334ee\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:53:17-119
 uses-feature#0x00020000
-ADDED from [com.google.android.gms:play-services-maps:17.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\dedda08c510bd4f81a4a1893e86b0a40\jetified-play-services-maps-17.0.1\AndroidManifest.xml:26:5-28:35
+ADDED from [com.google.android.gms:play-services-maps:18.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\74f6bd3c78e683b164571e3e07568bc5\jetified-play-services-maps-18.0.0\AndroidManifest.xml:26:5-28:35
 	android:glEsVersion
-		ADDED from [com.google.android.gms:play-services-maps:17.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\dedda08c510bd4f81a4a1893e86b0a40\jetified-play-services-maps-17.0.1\AndroidManifest.xml:27:9-41
+		ADDED from [com.google.android.gms:play-services-maps:18.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\74f6bd3c78e683b164571e3e07568bc5\jetified-play-services-maps-18.0.0\AndroidManifest.xml:27:9-41
 	android:required
-		ADDED from [com.google.android.gms:play-services-maps:17.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\dedda08c510bd4f81a4a1893e86b0a40\jetified-play-services-maps-17.0.1\AndroidManifest.xml:28:9-32
+		ADDED from [com.google.android.gms:play-services-maps:18.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\74f6bd3c78e683b164571e3e07568bc5\jetified-play-services-maps-18.0.0\AndroidManifest.xml:28:9-32
 queries
-ADDED from [com.google.android.gms:play-services-maps:17.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\dedda08c510bd4f81a4a1893e86b0a40\jetified-play-services-maps-17.0.1\AndroidManifest.xml:30:5-34:15
+ADDED from [com.google.android.gms:play-services-maps:18.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\74f6bd3c78e683b164571e3e07568bc5\jetified-play-services-maps-18.0.0\AndroidManifest.xml:30:5-34:15
 package#com.google.android.apps.maps
-ADDED from [com.google.android.gms:play-services-maps:17.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\dedda08c510bd4f81a4a1893e86b0a40\jetified-play-services-maps-17.0.1\AndroidManifest.xml:33:9-64
+ADDED from [com.google.android.gms:play-services-maps:18.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\74f6bd3c78e683b164571e3e07568bc5\jetified-play-services-maps-18.0.0\AndroidManifest.xml:33:9-64
 	android:name
-		ADDED from [com.google.android.gms:play-services-maps:17.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\dedda08c510bd4f81a4a1893e86b0a40\jetified-play-services-maps-17.0.1\AndroidManifest.xml:33:18-61
+		ADDED from [com.google.android.gms:play-services-maps:18.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\74f6bd3c78e683b164571e3e07568bc5\jetified-play-services-maps-18.0.0\AndroidManifest.xml:33:18-61
 uses-library#org.apache.http.legacy
-ADDED from [com.google.android.gms:play-services-maps:17.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\dedda08c510bd4f81a4a1893e86b0a40\jetified-play-services-maps-17.0.1\AndroidManifest.xml:39:9-41:40
+ADDED from [com.google.android.gms:play-services-maps:18.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\74f6bd3c78e683b164571e3e07568bc5\jetified-play-services-maps-18.0.0\AndroidManifest.xml:39:9-41:40
 	android:required
-		ADDED from [com.google.android.gms:play-services-maps:17.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\dedda08c510bd4f81a4a1893e86b0a40\jetified-play-services-maps-17.0.1\AndroidManifest.xml:41:13-37
+		ADDED from [com.google.android.gms:play-services-maps:18.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\74f6bd3c78e683b164571e3e07568bc5\jetified-play-services-maps-18.0.0\AndroidManifest.xml:41:13-37
 	android:name
-		ADDED from [com.google.android.gms:play-services-maps:17.0.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\dedda08c510bd4f81a4a1893e86b0a40\jetified-play-services-maps-17.0.1\AndroidManifest.xml:40:13-50
+		ADDED from [com.google.android.gms:play-services-maps:18.0.0] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\74f6bd3c78e683b164571e3e07568bc5\jetified-play-services-maps-18.0.0\AndroidManifest.xml:40:13-50
 meta-data#com.google.firebase.components:com.google.firebase.crashlytics.CrashlyticsRegistrar
 ADDED from [com.google.firebase:firebase-crashlytics:18.2.1] C:\Users\Knightmare\.gradle\caches\transforms-2\files-2.1\7e33bdb762e45369304835b935098624\jetified-firebase-crashlytics-18.2.1\AndroidManifest.xml:18:13-20:85
 	android:value
