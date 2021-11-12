@@ -51,7 +51,7 @@ if($con)
 	
 			$userid = md5(time() . mt_rand(1,1000000));
 
-			$query = "insert into $table (username,email,phoneno,password,userid) values('$username','$email','$phoneno','$password','$userid')";
+			$query = "insert into `admininfotable`(`username`, `password`, `userid`, `usertoken`, `phoneno`, `email`) values('$username','$password','$userid','','$phoneno','$email')";
 
 			$res = mysqli_query($con,$query);
 
@@ -122,11 +122,7 @@ if($con)
 		
    		if($queryres && isset($_POST["ngoid"]))
    		{		
-				$table = "ngocancelpickuptable";
-				$ngoid = $_POST['ngoid'];
-				$query = "select  `pickupid` from `ngocancelpickuptable` where `ngoid` = '$ngoid'";
-		if($queryres)
-			{
+	
    			$list = array(array());
 			$i = 0;
 				while($row = mysqli_fetch_assoc($queryres))
@@ -145,12 +141,6 @@ if($con)
 				$output['list'] = $list;
 				$output['error'] = false;
 				$output['message'] = "List loaded successfully";
-				}
-			else 
-			{
-   			$output['error']=true;
-   			$output['message'] = "Cannot execute query";
-			}
 		}
 		else 
    		{
@@ -186,12 +176,46 @@ if($con)
    }
     else if($_REQUEST['request_type'] == "updatestatus")
    {
-   	 if (isset($_POST["pickupid"]) && isset($_POST["pickupstatus"])){
+   	 if (isset($_POST["pickupid"]) && isset($_POST["pickupstatus"]) && isset($_POST["ngoid"])){
 			
 		$table = "userrequesttable";
 		
 		$pickupid = $_POST['pickupid'];
 		$pickupstatus = $_POST['pickupstatus'];
+		$ngoid = $_POST['ngoid'];
+		
+		if($pickupstatus  == "Picked"){
+
+		$query ="update `ngoacceptpickuptable` set pickupstatus = '$pickupstatus' where pickupid='$pickupid'";
+		
+		$queryres = mysqli_query($con,$query);
+		if($queryres)
+			{	
+				$output['message'] = 'Pickup status updated';
+				$output['error']=false;
+			}
+			else {
+			$output['error']=true;
+			$output['message'] = 'Something went wrong';
+			}
+		
+		}
+		else if($pickupstatus  == "Accepted"){
+			
+		$query ="INSERT INTO `ngoacceptpickuptable`(`pickupid`, `ngoid`, `pickupstatus`) VALUES ('$pickupid','$ngoid','$pickupstatus')";
+		
+		$queryres = mysqli_query($con,$query);
+		
+		if($queryres)
+			{	
+				$output['message'] = 'Pickup status updated';
+				$output['error']=false;
+			}
+			else {
+			$output['error']=true;
+			$output['message'] = 'Something went wrong';
+			}
+		}
 		
 		
 		$query ="update $table set pickupstatus = '$pickupstatus' where pickupid='$pickupid'";
@@ -213,6 +237,41 @@ if($con)
 		}	
    	  
    }
+   
+   
+   else if($_REQUEST['request_type'] == "getacceptedrequest"){
+		
+		$ngoid = $_POST['ngoid'];
+		$pickupstatus = "Accepted";
+		
+			$query = "select `pickupid` from `ngoacceptpickuptable` where `ngoid` = '$ngoid' and `pickupstatus`='$pickupstatus' ";
+			$pickuplist= array();
+			$i=0;
+			$queryres = mysqli_query($con,$query);
+			
+			if($queryres && isset($_POST["ngoid"])){
+				if(mysqli_num_rows($queryres)>0){
+					while($row = mysqli_fetch_assoc($queryres)){
+						$pickuplist[$i]= $row['pickupid'];
+						$i++;
+					}
+					$output['data'] = $pickuplist;
+					$output['error']=false;
+				}
+				else {
+					$output['error']=false;
+					$output['data'] = $pickuplist;
+					$output['message'] = 'No data';
+				}
+				}
+		else 
+		{
+			$output['error']=true;
+			$output['message'] = 'Something went wrong';
+		}
+	
+	}
+   
 
 }
 else

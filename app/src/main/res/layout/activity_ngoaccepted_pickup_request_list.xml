@@ -21,15 +21,39 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:gravity="center"
+        android:layout_margin="15dp"
         android:text="Accepted Requests"
         android:textColor="@color/orange_400"
         android:textSize="20sp"
         android:textStyle="bold" />
 
+    <TextView
+        android:id="@+id/gotobutton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/label"
+        android:layout_toEndOf="@+id/ivPreviousbtn"
+        android:gravity="start"
+        android:text="Go to Pending List"
+        android:textColor="@color/group_info_blue"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/ivPreviousbtn"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/label"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/previous_btn"
+        app:tint="@color/group_info_blue" />
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/label"
+        android:layout_below="@+id/gotobutton"
         android:scrollbars="vertical" />
 </RelativeLayout>

@@ -81,8 +81,8 @@ public class NGODashboardActivity extends AppCompatActivity
     ArrayList<ListItemModel> rlist;
     JSONArray cancelledist;
     private Button acceptbtn , rejectbtn ,cancelbtn;
-    private TextView itemlistTv,itemdetailsTv,noDataTv;
-    private ImageView locationIv,callIv;
+    private TextView itemlistTv,itemdetailsTv,noDataTv,gotobutton;
+    private ImageView locationIv,callIv,ivNext;
 
 
     @Override
@@ -96,12 +96,33 @@ public class NGODashboardActivity extends AppCompatActivity
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
-        getAndLoadData();
+
         viewforsnackbar = findViewById(android.R.id.content);
         noDataTv = findViewById(R.id.noDataTv);
+        ivNext = findViewById(R.id.ivNext);
+        gotobutton = findViewById(R.id.gotobutton);
 
         sessionHelper=new SessionHelper(this);
 
+
+        ivNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(NGODashboardActivity.this,NGOAcceptedPickupRequestList.class);
+                startActivity(i);
+                finish();
+            }
+        });
+        gotobutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(NGODashboardActivity.this,NGOAcceptedPickupRequestList.class);
+                startActivity(i);
+                finish();
+            }
+        });
+
+        getAndLoadData();
     }
 
     @Override
@@ -311,7 +332,7 @@ public class NGODashboardActivity extends AppCompatActivity
                             {
                                 ListItemModel item = gson.fromJson(jsonArray.get(i).toString(), ListItemModel.class);
                                 if(item.getPickupstatus()!=null){
-                                    if(!item.getPickupstatus().equalsIgnoreCase("Accepted"))
+                                    if(!item.getPickupstatus().equalsIgnoreCase("Accepted") && !item.getPickupstatus().equalsIgnoreCase("Picked"))
                                         if(isValidReq(item)){
                                             list.add(item);
                                         }
@@ -550,6 +571,7 @@ public class NGODashboardActivity extends AppCompatActivity
                 Map<String,String> params = new HashMap<>();
                 params.put("request_type","updatestatus");
                 params.put("pickupid",model.getPickupid());
+                params.put("ngoid",sessionHelper.getUserId());
                 params.put("pickupstatus","Accepted");
                 return params;
             }

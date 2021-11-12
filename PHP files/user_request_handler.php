@@ -30,7 +30,7 @@ if($con)
 			$password = md5($password);
 			$userid = md5(time() . mt_rand(1,1000000));
 
-			$query = "insert into $table (username,email,phoneno,password,userid) values('$username','$email','$phoneno','$password','$userid')";
+			$query = "INSERT INTO `userinformationtable`(`username`,`email`,`phoneno`,`password`,`userid`,`usertoken`) VALUES ('$username','$email','$phoneno','$password','$userid','')";
 
 			$res = mysqli_query($con,$query);
 
@@ -40,7 +40,7 @@ if($con)
 				$output['error']=false;
 			}
 			else{
-				$output['message'] = 'You might be already registered or the username is taken.';
+				$output['message'] = $res;
 				$output['error'] = true;
 			}
 		}
@@ -82,7 +82,8 @@ if($con)
 			$longitude = $_POST['longitude'];
 			$latitude = $_POST['latitude'];
 			$itemdetails = $_POST['itemdetails'];
-			$query = "insert into `$table` (`phoneno`,`latitude`,`longitude`,`fooddescription`,`pickupid`,`itemdetails`) values('$phoneno','$latitude','$longitude','$fooddesc','$pickupid','$itemdetails')";
+			$pickupstatus = "Pending";
+			$query = "insert into `$table` (`phoneno`,`latitude`,`longitude`,`fooddescription`,`pickupid`,`itemdetails`,`pickupstatus`) values('$phoneno','$latitude','$longitude','$fooddesc','$pickupid','$itemdetails','$pickupstatus')";
 		}
 		$queryres = mysqli_query($con,$query);
 		if($queryres)
@@ -116,29 +117,37 @@ if($con)
 		}
 		else $output['error']=true;
 	}
-}else if($request_type == "getallcancelledpickuprequest"){
+	else if($request_type == "getcancelled")
+	{
 		
-		$table = "ngocancelpickuptable";
 		$ngoid = $_POST['ngoid'];
 		
-		$query = "select `pickupid` from `ngocancelpickuptable` where `ngoid` = '$ngoid' ";
+			$query = "select `pickupid` from `ngocancelpickuptable` where `ngoid` = '$ngoid' ";
 			$tokenlist= array();
 			$i=0;
+			$queryres = mysqli_query($con,$query);
+			
 			if($queryres && isset($_POST["ngoid"])){
 				if(mysqli_num_rows($queryres)>0){
 					while($row = mysqli_fetch_assoc($queryres)){
-						$tokenlist[$i]= $row['usertoken'];
+						$tokenlist[$i]= $row['pickupid'];
 						$i++;
 					}
 					$output['data'] = $tokenlist;
 					$output['error']=false;
 				}
+				else {
+					$output['error']=false;
+					$output['data'] = $tokenlist;
+					$output['message'] = 'No data';
+		}
 			}
 		else {
 			$output['error']=true;
 			$output['message'] = 'Something went wrong';
 		}
 	
+	}
 }
 
 echo json_encode($output);

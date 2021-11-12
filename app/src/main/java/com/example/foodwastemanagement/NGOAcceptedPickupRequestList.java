@@ -16,7 +16,6 @@ package com.example.foodwastemanagement;
         import com.example.foodwastemanagement.model.NGOPushModel;
         import com.google.android.gms.tasks.OnCompleteListener;
         import com.google.android.gms.tasks.Task;
-        import com.google.android.material.snackbar.Snackbar;
 
         import androidx.annotation.NonNull;
         import androidx.appcompat.app.AppCompatActivity;
@@ -51,7 +50,6 @@ package com.example.foodwastemanagement;
         import com.google.firebase.messaging.FirebaseMessaging;
         import com.google.firebase.messaging.RemoteMessage;
         import com.google.gson.Gson;
-        import com.google.gson.JsonArray;
 
         import org.greenrobot.eventbus.EventBus;
         import org.greenrobot.eventbus.Subscribe;
@@ -79,29 +77,50 @@ public class NGOAcceptedPickupRequestList extends AppCompatActivity
     View viewforsnackbar;
     SessionHelper sessionHelper;
     ArrayList<ListItemModel> rlist;
-    JSONArray cancelledist;
+    JSONArray acceptedList;
     private Button acceptbtn , rejectbtn ,cancelbtn;
-    private TextView itemlistTv,itemdetailsTv,noDataTv;
-    private ImageView locationIv,callIv;
+    private TextView itemlistTv,itemdetailsTv,noDataTv,gotobutton;
+    private ImageView locationIv,callIv,ivPreviousbtn;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_dashboard);
+        setContentView(R.layout.activity_ngoaccepted_pickup_request_list);
         recyclerView = findViewById(R.id.recyclerview);
         list = new ArrayList<>();
         rlist = new ArrayList<>();
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
-        getAndLoadData();
+
         viewforsnackbar = findViewById(android.R.id.content);
         noDataTv = findViewById(R.id.noDataTv);
-
+        ivPreviousbtn = findViewById(R.id.ivPreviousbtn);
+        gotobutton = findViewById(R.id.gotobutton);
         sessionHelper=new SessionHelper(this);
 
+
+
+        ivPreviousbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(NGOAcceptedPickupRequestList.this,NGODashboardActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
+        gotobutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(NGOAcceptedPickupRequestList.this,NGODashboardActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
+
+        getAndLoadData();
     }
 
     @Override
@@ -311,7 +330,7 @@ public class NGOAcceptedPickupRequestList extends AppCompatActivity
                             {
                                 ListItemModel item = gson.fromJson(jsonArray.get(i).toString(), ListItemModel.class);
                                 if(item.getPickupstatus()!=null){
-                                    if(!item.getPickupstatus().equalsIgnoreCase("Accepted"))
+                                    if(item.getPickupstatus().equalsIgnoreCase("Accepted"))
                                         if(isValidReq(item)){
                                             list.add(item);
                                         }
@@ -326,7 +345,7 @@ public class NGOAcceptedPickupRequestList extends AppCompatActivity
                                 noDataTv.setVisibility(View.VISIBLE);
                             else {
                                 noDataTv.setVisibility(View.GONE);
-                                getCancelledPickupReq();
+                                getAcceptedPickupReq();
                             }
                         }
 
@@ -550,19 +569,20 @@ public class NGOAcceptedPickupRequestList extends AppCompatActivity
                 Map<String,String> params = new HashMap<>();
                 params.put("request_type","updatestatus");
                 params.put("pickupid",model.getPickupid());
-                params.put("pickupstatus","Accepted");
+                params.put("ngoid",sessionHelper.getUserId());
+                params.put("pickupstatus","Picked");
                 return params;
             }
         };
         queue.add(request);
     }
 
-    private void getCancelledPickupReq()
+    private void getAcceptedPickupReq()
     {
 
         //sending request and getting response using volley
         RequestQueue queue = Volley.newRequestQueue(this);
-        StringRequest request = new StringRequest(Request.Method.POST, url2, new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
@@ -570,7 +590,7 @@ public class NGOAcceptedPickupRequestList extends AppCompatActivity
                     JSONObject object = new JSONObject(response);
                     if(!object.getBoolean("error"))
                     {
-                        cancelledist = object.getJSONArray("data");
+                        acceptedList = object.getJSONArray("data");
                         filterData();
 
                         if(list.size()==0)
@@ -589,6 +609,8 @@ public class NGOAcceptedPickupRequestList extends AppCompatActivity
                             callIv = dialog.findViewById(R.id.rview_iv_call);
                             itemdetailsTv = dialog.findViewById(R.id.pickuplocationTv);
                             itemlistTv = dialog.findViewById(R.id.pickupdetailsTv);
+
+                            acceptbtn.setText("Pick");
 
 
                             itemlistTv.setText("Items: "+listItemModel.getFooddesc());
@@ -684,7 +706,7 @@ public class NGOAcceptedPickupRequestList extends AppCompatActivity
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> params = new HashMap<>();
-                params.put("request_type","getcancelled");
+                params.put("request_type","getacceptedrequest");
                 params.put("ngoid",sessionHelper.getUserId());
                 return params;
             }
@@ -694,15 +716,17 @@ public class NGOAcceptedPickupRequestList extends AppCompatActivity
 
     private void filterData() throws JSONException {
         ArrayList<ListItemModel> templist= new ArrayList<>(list);
+        ArrayList<ListItemModel> acceptedtempList= new ArrayList<>();
         for (ListItemModel model:templist
         ) {
-            for(int i=0;i<cancelledist.length();i++){
-                if(model.getPickupid().equalsIgnoreCase(cancelledist.get(i).toString())){
-                    list.remove(model);
+            for(int i = 0; i< acceptedList.length(); i++){
+                if(model.getPickupid().equalsIgnoreCase(acceptedList.get(i).toString())){
+                    acceptedtempList.add(model);
                     break;
                 }
             }
         }
+        list=new ArrayList<>(acceptedtempList);
     }
 
 }

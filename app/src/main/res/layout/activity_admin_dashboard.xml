@@ -22,14 +22,38 @@
         android:textStyle="bold"
         android:textSize="20sp"
         android:gravity="center"
+        android:layout_margin="15dp"
         android:text="Pickup Requests"
         android:textColor="@color/orange_400"
         android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/gotobutton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/label"
+        android:layout_marginEnd="20dp"
+        android:layout_toStartOf="@+id/ivNext"
+        android:gravity="end"
+        android:text="Go to Accepted List"
+        android:textColor="@color/group_info_blue"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/ivNext"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/label"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/next_btn"
+        app:tint="@color/group_info_blue" />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/label"
+        android:layout_below="@+id/gotobutton"
         android:scrollbars="vertical" />
 </RelativeLayout>
